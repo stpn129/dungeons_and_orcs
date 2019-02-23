@@ -23,8 +23,6 @@ public class Animator implements ApplicationListener {
     private float stateTime;
 
 
-    public Animator(Texture walkSheet, TextureRegion[] walkFrames, SpriteBatch spriteBatch) {
-    }
 
     @Override
     public void create() {
@@ -44,7 +42,7 @@ public class Animator implements ApplicationListener {
 
     @Override
     public void resize(int width, int height) {
-
+// ???
     }
 
     @Override
