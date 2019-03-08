@@ -10,35 +10,35 @@ import com.dungeonsandorcs.rlgame.objects.Player;
 
 public class DungeonGame extends ApplicationAdapter {
 
-	private static final int FRAME_COLS =  4; // вертикаль
-	 private static final int FRAME_ROWS = 4; // горизонт
+    private static final int FRAME_COLS = 4; // вертикаль
+    private static final int FRAME_ROWS = 4; // горизонт
 
-   private Player player;
-	private Animator animator;
-   private  OrthographicCamera camera;
+    private Player player;
+    private Animator animator;
+    private OrthographicCamera camera;
 
-   private SpriteBatch batch;
+    private SpriteBatch batch;
 
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		animator = new Animator();
-		animator.create();
+    @Override
+    public void create() {
+        batch = new SpriteBatch();
+        animator = new Animator();
+        animator.create();
 
-	}
+    }
 
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		animator.render();
-		batch.end();
+    @Override
+    public void render() {
+        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.begin();
+        animator.render();
+        batch.end();
 
-	}
-	
-	@Override
-	public void dispose () {
-   batch.dispose();
-	}
+    }
+
+    @Override
+    public void dispose() {
+        batch.dispose();
+    }
 }

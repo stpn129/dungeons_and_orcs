@@ -16,7 +16,7 @@ public class Player {
         return playerX;
     }
 
-    public void setPlayerX(int playerX) {
+    public void setPlayerX(int playelrX) {
         this.playerX = playerX;
     }
 
