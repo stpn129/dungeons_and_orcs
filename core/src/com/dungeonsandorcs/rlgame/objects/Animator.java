@@ -13,8 +13,8 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Animator extends ApplicationAdapter {
 
-    private static final int FRAME_COLS = 4; // вертикаль
-    private static final int FRAME_ROWS = 4; // горизонт
+    private static final int FRAME_COLS = 28; // вертикаль
+    private static final int FRAME_ROWS = 28; // горизонт
 
 
     private Animation<TextureRegion> walkAnimation;
