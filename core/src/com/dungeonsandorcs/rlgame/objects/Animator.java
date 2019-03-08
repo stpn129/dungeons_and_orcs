@@ -13,13 +13,19 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Animator extends ApplicationAdapter {
 
-    private static final int FRAME_COLS = 4; // вертикаль
-    private static final int FRAME_ROWS = 4; // горизонт
+    private static final int FRAME_COLS = 28; // вертикаль
+    private static final int FRAME_ROWS = 28; // горизонт
 
 
-    private Animation<TextureRegion> walkAnimation;
+    private Animation<TextureRegion> walkRightAnim;
+    private Animation<TextureRegion> walkLeftAnim;
+    private Animation<TextureRegion> walkUpAnim;
+    private Animation<TextureRegion> walkDownAnim;
     private Texture walkSheet;
-    private TextureRegion[] walkFrames;
+    private TextureRegion[] walkRightFrames;
+    private TextureRegion[] walkLeftFrames;
+    private TextureRegion[] walkUpFrames;
+    private TextureRegion[] walkDownFrames;
     private SpriteBatch spriteBatch;
     private TextureRegion currentFrame;
 
@@ -28,25 +34,37 @@ public class Animator extends ApplicationAdapter {
     private Rectangle spriteBox;
 
 
-
     @Override
     public void create() {
         walkSheet = new Texture(Gdx.files.internal("spritesSheet.png")); // #9
+
         TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / FRAME_COLS, walkSheet.getHeight() / FRAME_ROWS); // #10
-        walkFrames = new TextureRegion[FRAME_COLS];
-        int index = 0;
-        for (int j = 0; j < FRAME_COLS; j++) {
-            walkFrames[index++] = tmp[0][j];
+
+        walkRightFrames = new TextureRegion[4];
+        walkLeftFrames = new TextureRegion[4];
+        walkUpFrames = new TextureRegion[4];
+        walkDownFrames = new TextureRegion[4];
+
+        for (int j = 0; j < 4; j++) {
+            walkDownFrames[j] = tmp[0][j];
+            walkUpFrames[j] = tmp[0][4 + j];
+            walkLeftFrames[j] = tmp[0][4 * 2 + j];
+            walkRightFrames[j] = tmp[0][4 * 2 + j];
+            walkRightFrames[j].flip(true, false);
         }
 
-        walkAnimation = new Animation<TextureRegion>(0.25f, walkFrames); // TODO fix that
+        walkDownAnim = new Animation<TextureRegion>(0.25f, walkDownFrames);
+        walkUpAnim = new Animation<TextureRegion>(0.25f, walkUpFrames);
+        walkLeftAnim = new Animation<TextureRegion>(0.25f, walkLeftFrames);
+        walkRightAnim = new Animation<TextureRegion>(0.25f, walkRightFrames);
+
         spriteBatch = new SpriteBatch(); // #12
         stateTime = 0f; // #13
         spriteBox = new Rectangle();
         spriteBox.height = 16;
-        spriteBox.width  = 16;
-        spriteBox.x      = 256;
-        spriteBox.y      = 256;
+        spriteBox.width = 16;
+        spriteBox.x = 256;
+        spriteBox.y = 256;
 
     }
 
@@ -56,51 +74,24 @@ public class Animator extends ApplicationAdapter {
 
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT); // #14
         stateTime += Gdx.graphics.getDeltaTime(); // #15
-        currentFrame = walkAnimation.getKeyFrame(stateTime, true); // #16
         spriteBatch.begin();
-        spriteBatch.draw(currentFrame, spriteBox.x, spriteBox.y); // #17
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             spriteBox.x += 2;
-        }else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+            currentFrame = walkRightAnim.getKeyFrame(stateTime, true);
+        } else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             spriteBox.x -= 2;
-        }else if (Gdx.input.isKeyPressed(Input.Keys.UP)){
+            currentFrame = walkLeftAnim.getKeyFrame(stateTime, true);
+        } else if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             spriteBox.y += 2;
-        }else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+            currentFrame = walkUpAnim.getKeyFrame(stateTime, true);
+        } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             spriteBox.y -= 2;
+            currentFrame = walkDownAnim.getKeyFrame(stateTime, true);
+        } else {
+            currentFrame = walkDownFrames[0];
         }
+        spriteBatch.draw(currentFrame, spriteBox.x, spriteBox.y); // #17
         spriteBatch.end();
     }
 
-
-    public static int getFrameCols() {
-        return FRAME_COLS;
-    }
-
-    public static int getFrameRows() {
-        return FRAME_ROWS;
-    }
-
-    public Animation<TextureRegion> getWalkAnimation() {
-        return walkAnimation;
-    }
-
-    public Texture getWalkSheet() {
-        return walkSheet;
-    }
-
-    public TextureRegion[] getWalkFrames() {
-        return walkFrames;
-    }
-
-    public SpriteBatch getSpriteBatch() {
-        return spriteBatch;
-    }
-
-    public TextureRegion getCurrentFrame() {
-        return currentFrame;
-    }
-
-    public float getStateTime() {
-        return stateTime;
-    }
 }
