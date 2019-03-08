@@ -30,6 +30,7 @@ public class Animator extends ApplicationAdapter {
     private TextureRegion currentFrame;
 
     private float stateTime;
+    //com
 
     private Rectangle spriteBox;
 
