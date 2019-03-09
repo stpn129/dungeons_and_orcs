@@ -10,18 +10,9 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
+import com.dungeonsandorcs.rlgame.objects.Animator;
 
 
-import static com.dungeonsandorcs.rlgame.objects.Animator.getCurrentFrame;
-import static com.dungeonsandorcs.rlgame.objects.Animator.getSpriteBatch;
-import static com.dungeonsandorcs.rlgame.objects.Animator.getSpriteBox;
-import static com.dungeonsandorcs.rlgame.objects.Animator.getStateTime;
-import static com.dungeonsandorcs.rlgame.objects.Animator.getWalkDownAnim;
-import static com.dungeonsandorcs.rlgame.objects.Animator.getWalkDownFrames;
-import static com.dungeonsandorcs.rlgame.objects.Animator.getWalkLeftAnim;
-import static com.dungeonsandorcs.rlgame.objects.Animator.getWalkRightAnim;
-
-import static com.dungeonsandorcs.rlgame.objects.Animator.getWalkUpAnim;
 
 
 public class Controller extends ApplicationAdapter {
@@ -40,20 +31,27 @@ public class Controller extends ApplicationAdapter {
 
     private Rectangle spriteBox;
 
+    private Animator animator;
+
+    public Controller(Animator animator) {
+        this.animator = animator;
+    }
+
     @Override
     public void create() {
-        spriteBatch        = getSpriteBatch();
 
-        walkRightAnim      = getWalkRightAnim();
-        walkLeftAnim       = getWalkLeftAnim();
-        walkUpAnim         = getWalkUpAnim();
-        walkDownAnim       = getWalkDownAnim();
+        spriteBatch        = animator.getSpriteBatch();
 
-        walkDownFrames     = getWalkDownFrames();
-        stateTime          = getStateTime();
-        currentFrame       = getCurrentFrame();
+        walkRightAnim      = animator.getWalkRightAnim();
+        walkLeftAnim       = animator.getWalkLeftAnim();
+        walkUpAnim         = animator.getWalkUpAnim();
+        walkDownAnim       = animator.getWalkDownAnim();
 
-        spriteBox          = getSpriteBox();
+        walkDownFrames     = animator.getWalkDownFrames();
+        stateTime          = animator.getStateTime();
+        currentFrame       = animator.getCurrentFrame();
+
+        spriteBox          = animator.getSpriteBox();
 
 
 

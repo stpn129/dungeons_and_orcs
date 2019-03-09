@@ -27,7 +27,7 @@ public class DungeonGame extends ApplicationAdapter {
             animator = new Animator();
 
             animator.create();
-            controller = new Controller();
+            controller = new Controller(animator);
             controller.create();
 
     }
