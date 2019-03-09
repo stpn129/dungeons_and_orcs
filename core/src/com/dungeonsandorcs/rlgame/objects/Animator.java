@@ -17,22 +17,22 @@ public class Animator extends ApplicationAdapter {
     private static final int FRAME_ROWS = 32; // горизонт
 
 
-    private Animation<TextureRegion> walkRightAnim;
-    private Animation<TextureRegion> walkLeftAnim;
-    private Animation<TextureRegion> walkUpAnim;
-    private Animation<TextureRegion> walkDownAnim;
-    private Texture walkSheet;
-    private TextureRegion[] walkRightFrames;
-    private TextureRegion[] walkLeftFrames;
-    private TextureRegion[] walkUpFrames;
-    private TextureRegion[] walkDownFrames;
-    private SpriteBatch spriteBatch;
-    private TextureRegion currentFrame;
+    private static Animation<TextureRegion> walkRightAnim;
+    private static Animation<TextureRegion> walkLeftAnim;
+    private static Animation<TextureRegion> walkUpAnim;
+    private static Animation<TextureRegion> walkDownAnim;
+    private static Texture walkSheet;
+    private static TextureRegion[] walkRightFrames;
+    private static TextureRegion[] walkLeftFrames;
+    private static TextureRegion[] walkUpFrames;
+    private static TextureRegion[] walkDownFrames;
+    private static SpriteBatch spriteBatch;
+    private static TextureRegion currentFrame;
 
-    private float stateTime;
+    private static float stateTime;
 
 
-    private Rectangle spriteBox;
+    private static Rectangle spriteBox;
 
 
     @Override
@@ -95,4 +95,63 @@ public class Animator extends ApplicationAdapter {
         spriteBatch.end();
     }
 
+    public static int getFrameCols() {
+        return FRAME_COLS;
+    }
+
+    public static int getFrameRows() {
+        return FRAME_ROWS;
+    }
+
+    public static Animation<TextureRegion> getWalkRightAnim() {
+        return walkRightAnim;
+    }
+
+    public static Animation<TextureRegion> getWalkLeftAnim() {
+        return walkLeftAnim;
+    }
+
+    public static Animation<TextureRegion> getWalkUpAnim() {
+        return walkUpAnim;
+    }
+
+    public static Animation<TextureRegion> getWalkDownAnim() {
+        return walkDownAnim;
+    }
+
+    public static Texture getWalkSheet() {
+        return walkSheet;
+    }
+
+    public static TextureRegion[] getWalkRightFrames() {
+        return walkRightFrames;
+    }
+
+    public static TextureRegion[] getWalkLeftFrames() {
+        return walkLeftFrames;
+    }
+
+    public static TextureRegion[] getWalkUpFrames() {
+        return walkUpFrames;
+    }
+
+    public static TextureRegion[] getWalkDownFrames() {
+        return walkDownFrames;
+    }
+
+    public static SpriteBatch getSpriteBatch() {
+        return spriteBatch;
+    }
+
+    public static TextureRegion getCurrentFrame() {
+        return currentFrame;
+    }
+
+    public static float getStateTime() {
+        return stateTime;
+    }
+
+    public static Rectangle getSpriteBox() {
+        return spriteBox;
+    }
 }
