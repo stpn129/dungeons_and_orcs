@@ -13,8 +13,8 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Animator extends ApplicationAdapter {
 
-    private static final int FRAME_COLS = 28; // вертикаль
-    private static final int FRAME_ROWS = 28; // горизонт
+    private static final int FRAME_COLS = 32; // вертикаль
+    private static final int FRAME_ROWS = 32; // горизонт
 
 
     private Animation<TextureRegion> walkRightAnim;
@@ -30,7 +30,7 @@ public class Animator extends ApplicationAdapter {
     private TextureRegion currentFrame;
 
     private float stateTime;
-    //com
+
 
     private Rectangle spriteBox;
 
@@ -39,7 +39,7 @@ public class Animator extends ApplicationAdapter {
     public void create() {
         walkSheet = new Texture(Gdx.files.internal("spritesSheet.png")); // #9
 
-        TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / FRAME_COLS, walkSheet.getHeight() / FRAME_ROWS); // #10
+        TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / FRAME_COLS, walkSheet.getHeight() / FRAME_ROWS ); // #10
 
         walkRightFrames = new TextureRegion[4];
         walkLeftFrames = new TextureRegion[4];

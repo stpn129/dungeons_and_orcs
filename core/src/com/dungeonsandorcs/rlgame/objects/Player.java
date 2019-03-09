@@ -1,8 +1,6 @@
 package com.dungeonsandorcs.rlgame.objects;
 
 import com.badlogic.gdx.physics.box2d.Body;
-import com.dungeonsandorcs.rlgame.objects.Animator;
-
 
 
 public class Player {
