@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.dungeonsandorcs.rlgame.controllers.Controller;
 import com.dungeonsandorcs.rlgame.objects.Animator;
 import com.dungeonsandorcs.rlgame.objects.Player;
 
@@ -15,15 +16,19 @@ public class DungeonGame extends ApplicationAdapter {
 
     private Player player;
     private Animator animator;
+    private Controller controller;
     private OrthographicCamera camera;
 
     private SpriteBatch batch;
 
     @Override
     public void create() {
-        batch = new SpriteBatch();
-        animator = new Animator();
-        animator.create();
+            batch = new SpriteBatch();
+            animator = new Animator();
+
+            animator.create();
+            controller = new Controller();
+            controller.create();
 
     }
 
@@ -32,7 +37,7 @@ public class DungeonGame extends ApplicationAdapter {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        animator.render();
+        controller.render();
         batch.end();
 
     }

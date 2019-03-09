@@ -69,40 +69,6 @@ public class Animator extends ApplicationAdapter {
 
     }
 
-
-    @Override
-    public void render() {
-
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT); // #14
-        stateTime += Gdx.graphics.getDeltaTime(); // #15
-        spriteBatch.begin();
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            spriteBox.x += 2;
-            currentFrame = walkRightAnim.getKeyFrame(stateTime, true);
-        } else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            spriteBox.x -= 2;
-            currentFrame = walkLeftAnim.getKeyFrame(stateTime, true);
-        } else if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            spriteBox.y += 2;
-            currentFrame = walkUpAnim.getKeyFrame(stateTime, true);
-        } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            spriteBox.y -= 2;
-            currentFrame = walkDownAnim.getKeyFrame(stateTime, true);
-        } else {
-            currentFrame = walkDownFrames[0];
-        }
-        spriteBatch.draw(currentFrame, spriteBox.x, spriteBox.y); // #17
-        spriteBatch.end();
-    }
-
-    public static int getFrameCols() {
-        return FRAME_COLS;
-    }
-
-    public static int getFrameRows() {
-        return FRAME_ROWS;
-    }
-
     public static Animation<TextureRegion> getWalkRightAnim() {
         return walkRightAnim;
     }
@@ -119,21 +85,8 @@ public class Animator extends ApplicationAdapter {
         return walkDownAnim;
     }
 
-    public static Texture getWalkSheet() {
-        return walkSheet;
-    }
 
-    public static TextureRegion[] getWalkRightFrames() {
-        return walkRightFrames;
-    }
 
-    public static TextureRegion[] getWalkLeftFrames() {
-        return walkLeftFrames;
-    }
-
-    public static TextureRegion[] getWalkUpFrames() {
-        return walkUpFrames;
-    }
 
     public static TextureRegion[] getWalkDownFrames() {
         return walkDownFrames;
