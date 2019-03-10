@@ -1,6 +1,7 @@
 package com.dungeonsandorcs.rlgame;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -15,7 +16,7 @@ import com.dungeonsandorcs.rlgame.screens.MainScreen;
 import com.dungeonsandorcs.rlgame.screens.MenuScreen;
 import com.dungeonsandorcs.rlgame.screens.PreferencesScreen;
 
-public class DungeonGame extends ApplicationAdapter {
+public class DungeonGame extends Game {
 
     private static final int FRAME_COLS = 4; // вертикаль
     private static final int FRAME_ROWS = 4; // горизонт
@@ -86,6 +87,5 @@ public class DungeonGame extends ApplicationAdapter {
         }
     }
 
-    private void setScreen(Screen screen) {
-    }
+
 }
