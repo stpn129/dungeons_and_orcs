@@ -1,9 +1,16 @@
 package com.dungeonsandorcs.rlgame.screens;
 
 import com.badlogic.gdx.Screen;
+import com.dungeonsandorcs.rlgame.DungeonGame;
 
 public class LoadingScreen implements Screen {
-    public LoadingScreen() {
+
+
+
+    private DungeonGame parent;
+
+    public LoadingScreen(DungeonGame parent) {
+        this.parent = parent;
     }
 
     @Override
@@ -13,7 +20,7 @@ public class LoadingScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
+     parent.changeScreen(DungeonGame.MENU);
     }
 
     @Override

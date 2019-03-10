@@ -1,9 +1,14 @@
 package com.dungeonsandorcs.rlgame.screens;
 
 import com.badlogic.gdx.Screen;
+import com.dungeonsandorcs.rlgame.DungeonGame;
 
 public class PreferencesScreen implements Screen {
-    public PreferencesScreen() {
+    private DungeonGame parent;
+
+
+    public PreferencesScreen(DungeonGame parent) {
+        this.parent = parent;
     }
 
     @Override

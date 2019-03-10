@@ -41,23 +41,25 @@ public class DungeonGame extends Game {
 
     @Override
     public void create() {
-            batch = new SpriteBatch();
-            animator = new Animator();
+        loadingScreen = new LoadingScreen(this);
+        setScreen(loadingScreen);
 
-            animator.create();
-            controller = new Controller(animator);
-            controller.create();
+        animator = new Animator();
+
+        animator.create();
+        controller = new Controller(animator);
+        controller.create();
 
     }
 
     @Override
     public void render() {
         Gdx.gl.glClearColor(1, 1, 1, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); //а без этого ничего нет;
+        batch = new SpriteBatch();
         batch.begin();
         controller.render();
         batch.end();
-
     }
 
     @Override
@@ -65,23 +67,23 @@ public class DungeonGame extends Game {
         batch.dispose();
     }
 
-
-    public void changeScreen(int screen){
-        switch(screen){
+    public void changeScreen(int screen) {
+        switch (screen) {
             case MENU:
-                if(menuScreen == null) menuScreen = new MenuScreen();
+                if (menuScreen == null) menuScreen = new MenuScreen(this);
                 this.setScreen(menuScreen);
                 break;
             case PREFERENCES:
-                if(preferencesScreen == null) preferencesScreen = new PreferencesScreen();
+                if (preferencesScreen == null) preferencesScreen = new PreferencesScreen(this);
                 this.setScreen(preferencesScreen);
                 break;
             case APPLICATION:
-                if(mainScreen == null) mainScreen = new MainScreen();
+                if (mainScreen == null) mainScreen = new MainScreen(this);
                 this.setScreen(mainScreen);
                 break;
             case ENDGAME:
-                if(endScreen == null) endScreen = new EndScreen();
+                if (endScreen == null)
+                    endScreen = new EndScreen(this);//тут я по логике this поставил
                 this.setScreen(endScreen);
                 break;
         }

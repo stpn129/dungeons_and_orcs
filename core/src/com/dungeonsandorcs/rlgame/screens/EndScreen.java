@@ -1,9 +1,13 @@
 package com.dungeonsandorcs.rlgame.screens;
 
 import com.badlogic.gdx.Screen;
+import com.dungeonsandorcs.rlgame.DungeonGame;
 
 public class EndScreen implements Screen {
-    public EndScreen() {
+    private DungeonGame parent;
+
+    public EndScreen(DungeonGame parent) {
+        this.parent = parent;
     }
 
     @Override
