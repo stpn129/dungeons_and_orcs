@@ -1,9 +1,7 @@
 package com.dungeonsandorcs.rlgame;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,6 +13,11 @@ import com.dungeonsandorcs.rlgame.screens.LoadingScreen;
 import com.dungeonsandorcs.rlgame.screens.MainScreen;
 import com.dungeonsandorcs.rlgame.screens.MenuScreen;
 import com.dungeonsandorcs.rlgame.screens.PreferencesScreen;
+
+import static com.dungeonsandorcs.rlgame.DungeonGame.States.APPLICATION;
+import static com.dungeonsandorcs.rlgame.DungeonGame.States.ENDGAME;
+import static com.dungeonsandorcs.rlgame.DungeonGame.States.MENU;
+import static com.dungeonsandorcs.rlgame.DungeonGame.States.PREFERENCES;
 
 public class DungeonGame extends Game {
 
@@ -34,10 +37,9 @@ public class DungeonGame extends Game {
     private MainScreen mainScreen;
     private EndScreen endScreen;
 
-    public final static int MENU = 0;
-    public final static int PREFERENCES = 1;
-    public final static int APPLICATION = 2;
-    public final static int ENDGAME = 3;
+
+    States state;
+
 
     @Override
     public void create() {
@@ -54,7 +56,7 @@ public class DungeonGame extends Game {
 
     @Override
     public void render() {
-        Gdx.gl.glClearColor(1, 1, 1, 1);
+       Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); //а без этого ничего нет;
         batch = new SpriteBatch();
         batch.begin();
@@ -68,7 +70,7 @@ public class DungeonGame extends Game {
     }
 
     public void changeScreen(int screen) {
-        switch (screen) {
+        switch (state) {
             case MENU:
                 if (menuScreen == null) menuScreen = new MenuScreen(this);
                 this.setScreen(menuScreen);
@@ -90,4 +92,7 @@ public class DungeonGame extends Game {
     }
 
 
+    public static enum States{
+        MENU,PREFERENCES,APPLICATION,ENDGAME
+    }
 }
