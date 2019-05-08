@@ -1,5 +1,7 @@
 package com.dungeonsandorcs.rlgame.components;
 
-public class PlayerComponent {
+import com.badlogic.ashley.core.Component;
+
+public class PlayerComponent  implements Component {
 
 }
