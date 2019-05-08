@@ -17,26 +17,17 @@ import com.dungeonsandorcs.rlgame.utils.BodyFactory;
 
 public class GameScreen extends BasicScreen {
 
-
-
     private OrthographicCamera cam;
     private KeyboardController controller;
     private SpriteBatch sb;
     private PooledEngine engine;
     private World world;
-    private BodyFactory bodyFactory;
-    private Sound ping;
-    private Sound boing;
-    private TextureAtlas atlas;
-
-
 
     public GameScreen(DungeonGame game) {
         super(game);
         controller = new KeyboardController();
         world = new World(new Vector2(0,-10f), true);
         world.setContactListener(new B2dContactListener());
-        bodyFactory = BodyFactory.getInstance(world);
 
 //        game.assMan.queueAddSounds();
 //        game.assMan.manager.finishLoading();
