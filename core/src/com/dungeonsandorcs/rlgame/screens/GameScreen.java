@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.dungeonsandorcs.rlgame.controllers.KeyboardController;
 
 import com.dungeonsandorcs.rlgame.utils.BodyFactory;
+import com.dungeonsandorcs.rlgame.utils.Objects;
 
 public class GameScreen extends BasicScreen {
 
@@ -21,12 +22,10 @@ public class GameScreen extends BasicScreen {
 
     private OrthographicCamera cam;
     private KeyboardController controller;
-    private SpriteBatch sb;
+    private SpriteBatch spriteBatch;
     private PooledEngine engine;
     private World world;
     private BodyFactory bodyFactory;
-    private Sound ping;
-    private Sound boing;
     private TextureAtlas atlas;
 
 
@@ -34,9 +33,10 @@ public class GameScreen extends BasicScreen {
     public GameScreen(DungeonGame game) {
         super(game);
         controller = new KeyboardController();
-        world = new World(new Vector2(0,-10f), true);
+        Objects.world = new World(new Vector2(0,-0), true);
+        Objects.camera = new OrthographicCamera();
         world.setContactListener(new B2dContactListener());
-        bodyFactory = BodyFactory.getInstance(world);
+//        bodyFactory = BodyFactory.getInstance(world);
 
 //        game.assMan.queueAddSounds();
 //        game.assMan.manager.finishLoading();
@@ -44,13 +44,13 @@ public class GameScreen extends BasicScreen {
 //        ping = game.assMan.manager.get("sounds/ping.wav",Sound.class);
 //        boing = game.assMan.manager.get("sounds/boing.wav",Sound.class);
 
-        sb = new SpriteBatch();
+        Objects.spriteBatch = new SpriteBatch();
       //  RenderingSystem renderingSystem = new RenderingSystem(sb);
    //     cam = renderingSystem.getCamera();
-        sb.setProjectionMatrix(cam.combined);
+        spriteBatch.setProjectionMatrix(cam.combined);
 
 
-        engine = new PooledEngine();
+ //       engine = new PooledEngine();
 
 //        engine.addSystem(new AnimationSystem());
 //        engine.addSystem(renderingSystem);
