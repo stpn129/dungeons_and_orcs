@@ -1,4 +1,4 @@
-package units;
+package com.dungeonsandorcs.rlgame.utils;
 
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;

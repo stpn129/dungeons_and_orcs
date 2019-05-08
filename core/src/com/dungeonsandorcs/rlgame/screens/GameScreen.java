@@ -1,9 +1,7 @@
 package com.dungeonsandorcs.rlgame.screens;
 
-import com.dungeonsandorcs.rlgame.AppConstants;
 import com.dungeonsandorcs.rlgame.B2dContactListener;
 import com.dungeonsandorcs.rlgame.DungeonGame;
-import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -13,10 +11,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.dungeonsandorcs.rlgame.controllers.KeyboardController;
 
-import units.BodyFactory;
+import com.dungeonsandorcs.rlgame.utils.BodyFactory;
 
 public class GameScreen extends BasicScreen {
 
