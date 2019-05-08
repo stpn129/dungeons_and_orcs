@@ -50,7 +50,7 @@ public class GameScreen extends BasicScreen {
         spriteBatch.setProjectionMatrix(cam.combined);
 
 
- //       engine = new PooledEngine();
+      engine = new PooledEngine();
 
 //        engine.addSystem(new AnimationSystem());
 //        engine.addSystem(renderingSystem);
