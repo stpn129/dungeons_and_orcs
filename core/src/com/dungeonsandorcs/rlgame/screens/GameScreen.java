@@ -1,5 +1,10 @@
 package com.dungeonsandorcs.rlgame.screens;
 
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.dungeonsandorcs.rlgame.B2dContactListener;
 import com.dungeonsandorcs.rlgame.DungeonGame;
 import com.badlogic.ashley.core.PooledEngine;
@@ -14,6 +19,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.dungeonsandorcs.rlgame.controllers.KeyboardController;
 
 import com.dungeonsandorcs.rlgame.systems.DebugSystem;
+import com.dungeonsandorcs.rlgame.systems.PlayerControlSystem;
 import com.dungeonsandorcs.rlgame.utils.BodyFactory;
 import com.dungeonsandorcs.rlgame.utils.EntityUtils;
 import com.dungeonsandorcs.rlgame.utils.Objects;
@@ -27,24 +33,31 @@ public class GameScreen extends BasicScreen {
     private World world;
     private BodyFactory bodyFactory;
     private TextureAtlas atlas;
-
-
+    private OrthogonalTiledMapRenderer renderer;
 
     public GameScreen(DungeonGame game) {
         super(game);
         controller = new KeyboardController();
-        Objects.world = new World(new Vector2(0,-0), true);
-        Objects.camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        Objects.world = new World(new Vector2(0, -0), true);
+        Objects.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        Objects.camera.setToOrtho(false,30,30);
         Objects.spriteBatch = new SpriteBatch();
         Objects.spriteBatch.setProjectionMatrix(Objects.camera.combined);
 
 
-      engine = new PooledEngine();
-      engine.addSystem(new DebugSystem());
+        TiledMap map = new TmxMapLoader().load("maps/Tilemap/sample_fantasy.tmx");
+        float unitScale = 1 / 16f;
+         renderer = new OrthogonalTiledMapRenderer(map, unitScale);
 
 
+        engine = new PooledEngine();
+        Entity entityPlayer = EntityUtils.createPlayer();
 
-        EntityUtils.createPlayer();
+        engine.addSystem(new DebugSystem());
+        engine.addSystem(new PlayerControlSystem());
+        engine.addEntity(entityPlayer);
+        renderer.setView(Objects.camera);
+
 
     }
 
@@ -58,6 +71,8 @@ public class GameScreen extends BasicScreen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0f, 0f, 0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        renderer.render();
 
         engine.update(delta);
 

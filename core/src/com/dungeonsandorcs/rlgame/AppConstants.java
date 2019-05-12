@@ -29,4 +29,5 @@ public class AppConstants {
     public static enum Shape {
         SQUARE, CIRCLE, PEGAGON, ARROW
     }
+    public static float SPEED = 1/16f;
 }

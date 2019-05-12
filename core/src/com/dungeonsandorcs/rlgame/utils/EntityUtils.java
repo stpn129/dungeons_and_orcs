@@ -21,7 +21,8 @@ public class EntityUtils {
         B2dBodyComponent b2dBodyComponent = new B2dBodyComponent();
         Body body = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(AppConstants.Material.RUBBER, BodyDef.BodyType.StaticBody,
-                0,0,10.00f,10.00f);
+                        100, 100, 2f, 2f);
+        b2dBodyComponent.body = body;
 
         entity.add(b2dBodyComponent);
         return entity;
