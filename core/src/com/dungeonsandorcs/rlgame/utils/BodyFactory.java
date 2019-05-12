@@ -78,9 +78,6 @@ public class BodyFactory {
         return boxBody;
     }
 
-    public Body makeBoxPolyBody(AppConstants.Material material, BodyDef.BodyType type, boolean fixedRotation, float... coordinates) {
-        return null;
-    }
     public Body makeCirclePolyBody(float posx, float posy, float radius, AppConstants.Material material){
         return makeCirclePolyBody( posx,  posy,  radius,  material,  BodyDef.BodyType.DynamicBody,  false);
     }
