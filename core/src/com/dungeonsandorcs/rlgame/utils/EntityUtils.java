@@ -2,6 +2,8 @@ package com.dungeonsandorcs.rlgame.utils;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.dungeonsandorcs.rlgame.AppConstants;
@@ -17,6 +19,8 @@ public class EntityUtils {
         //add component to Entity
 
         PlayerComponent playerComponent = new PlayerComponent();
+        Sprite sprite = new Sprite(new Texture("android/assets/skins/spritesSheet.png"));
+        
         entity.add(playerComponent);
         B2dBodyComponent b2dBodyComponent = new B2dBodyComponent();
         Body body = BodyFactory.getInstance(Objects.world)
