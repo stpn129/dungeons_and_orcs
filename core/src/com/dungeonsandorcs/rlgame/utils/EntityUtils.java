@@ -19,8 +19,7 @@ public class EntityUtils {
         //add component to Entity
 
         PlayerComponent playerComponent = new PlayerComponent();
-        Sprite sprite = new Sprite(new Texture("android/assets/skins/spritesSheet.png"));
-        
+
         entity.add(playerComponent);
         B2dBodyComponent b2dBodyComponent = new B2dBodyComponent();
         Body body = BodyFactory.getInstance(Objects.world)

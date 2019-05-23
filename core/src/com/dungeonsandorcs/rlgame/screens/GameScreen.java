@@ -21,6 +21,7 @@ import com.dungeonsandorcs.rlgame.controllers.KeyboardController;
 import com.dungeonsandorcs.rlgame.systems.CameraControllSystem;
 import com.dungeonsandorcs.rlgame.systems.DebugSystem;
 import com.dungeonsandorcs.rlgame.systems.PlayerControlSystem;
+import com.dungeonsandorcs.rlgame.systems.RenderSystem;
 import com.dungeonsandorcs.rlgame.utils.BodyFactory;
 import com.dungeonsandorcs.rlgame.utils.EntityUtils;
 import com.dungeonsandorcs.rlgame.utils.Objects;
@@ -54,6 +55,7 @@ public class GameScreen extends BasicScreen {
         engine = new PooledEngine();
         Entity entityPlayer = EntityUtils.createPlayer();
 
+        engine.addSystem(new RenderSystem());
         engine.addSystem(new DebugSystem());
         engine.addSystem(new PlayerControlSystem());
         engine.addSystem(new CameraControllSystem());
