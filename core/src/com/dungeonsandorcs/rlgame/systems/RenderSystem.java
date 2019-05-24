@@ -37,7 +37,7 @@ public class RenderSystem extends IteratingSystem {
         batch.begin();
         B2dBodyComponent b2dBodyComponent = ComponentUtil.B_2_D_BODY_COMPONENT_MAPPER.get(entity);
         Body body =  b2dBodyComponent.body;
-        Sprite sprite = new Sprite(new Texture("Creatures/spritesSheet.png"));
+        Sprite sprite = new Sprite(new Texture("Creatures/hero.png"));
 
         float posX = body.getPosition().x;
         float posY = body.getPosition().y;
