@@ -55,7 +55,7 @@ public class GameScreen extends BasicScreen {
         engine = new PooledEngine();
         Entity entityPlayer = EntityUtils.createPlayer();
 
-        engine.addSystem(new RenderSystem());
+        engine.addSystem(new RenderSystem(renderer));
         engine.addSystem(new DebugSystem());
         engine.addSystem(new PlayerControlSystem());
         engine.addSystem(new CameraControllSystem());
