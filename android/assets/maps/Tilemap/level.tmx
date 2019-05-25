@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="2019.01.30" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1">
- <tileset firstgid="1" source="1bitpack_kenney/Tilemap/gameTileset.tsx"/>
- <tileset firstgid="1025" source="1bitpack_kenney/Tilemap/colored_transparent.tsx"/>
+ <tileset firstgid="1" source="gameTileset.tsx"/>
+ <tileset firstgid="1025" source="colored_transparent.tsx"/>
  <layer id="2" name="Down" width="64" height="64">
   <data encoding="csv">
 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,33,1,1,68,33,1,1,68,1,68,68,68,1,1,1,1,1,33,1,1,68,1,68,33,68,1,1,1,1,1,68,33,68,1,1,1,1,1,1,1,1,
