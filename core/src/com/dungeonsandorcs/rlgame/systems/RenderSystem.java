@@ -47,8 +47,15 @@ public class RenderSystem extends IteratingSystem {
         //enemies
         Sprite enemy = new Sprite(new Texture("Creatures/enemy1.png"));
         Sprite enemy0 = new Sprite(new Texture("Creatures/enemy2.png"));
+        Sprite diamond = new Sprite(new Texture("Creatures/diamond.png"));
+
+        //quests
+        Sprite stranger = new Sprite(new Texture("Creatures/stranger.png"));
+
         enemy.setPosition(528 ,48);
-        enemy.setPosition(496,48);
+        enemy0.setPosition(496,48);
+        diamond.setPosition(400,144);
+        stranger.setPosition(576,112);
 
 
         Vector2 pos = new Vector2();
@@ -63,8 +70,9 @@ public class RenderSystem extends IteratingSystem {
         sprite.setRotation(rotation);
         batch.draw(sprite,cPos.x,cPos.y);
         batch.draw(enemy,528,48);
-        batch.draw(enemy,496,48);
-
+        batch.draw(enemy0,496,48);
+        batch.draw(diamond,400,144);
+        batch.draw(stranger,576,112);
         batch.end();
 
     }

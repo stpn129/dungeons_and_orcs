@@ -33,24 +33,24 @@ public class PlayerControlSystem extends IteratingSystem {
         Vector2 position = body.getTransform().getPosition();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
-            if (cPos.y < 936  ){
+            if (cPos.y < 504  ){
                 position = position.add(0, AppConstants.SPEED);
 
             }
 
         } if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-            if (cPos.y > 8) {
+            if (cPos.y > 8 && (cPos.x != 520 && cPos.y > 96)) {
                 position = position.add(0,-AppConstants.SPEED);
 
             }
         } if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-            if(cPos.x < 1000 ) {
+            if(cPos.x < 920 && (cPos.x !=520 && cPos.y > 80)) {
 
                 position = position.add(AppConstants.SPEED, 0);
             }
 
         } if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
-            if(cPos.x >8 ){
+            if(cPos.x >232 && (cPos.x !=520 && cPos.y > 80)){
                 position = position.add(-AppConstants.SPEED,0);
 
             }
@@ -58,8 +58,8 @@ public class PlayerControlSystem extends IteratingSystem {
 
         }
         body.setTransform(position,0);
-//        int s1 = (int) cPos.x;
-//        int s2 = (int) cPos.y ;
-//        System.out.println("x="+s1+","+"y="+s2);
+        int s1 = (int) cPos.x;
+        int s2 = (int) cPos.y ;
+        System.out.println("x="+s1+","+"y="+s2);
     }
 }

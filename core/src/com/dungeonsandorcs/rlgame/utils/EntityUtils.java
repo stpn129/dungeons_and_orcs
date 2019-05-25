@@ -31,41 +31,26 @@ public class EntityUtils {
                 .makeBoxPolyBody(RUBBER, BodyDef.BodyType.DynamicBody,
                         520f, 8f, 16f, 16f);
         b2dBodyComponent.body = body;
-Body Enemy = BodyFactory.getInstance(Objects.world)
+        Body Enemy = BodyFactory.getInstance(Objects.world)
         .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
                 536,56,16f,16f);
-Body Enemy0 = BodyFactory.getInstance(Objects.world)
+        Body Enemy0 = BodyFactory.getInstance(Objects.world)
         .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
                 504,56,16f,16f);
-      Body wall = BodyFactory.getInstance(Objects.world)
+
+        Body house = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
-                       72,72,16f,200*16f);
-        Body wall0 = BodyFactory.getInstance(Objects.world)
+                        520,264,16*5,16*3f);
+        Body house0 = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
-                        952,952,16f,80*25f);
-        Body wall1 = BodyFactory.getInstance(Objects.world)
+                        592 +8,144 + 8,16*5,16*3f);
+        Body diamond = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
-                        536,8,16f,16*11f);
-        Body wall2 = BodyFactory.getInstance(Objects.world)
+                        400 +8,144 + 8,16,16);
+        Body stranger = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
-                        80,960 +8,16*125f,16f);
-        Body wall3 = BodyFactory.getInstance(Objects.world)
-                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
-                        504,8,16f,16*11f);
-        Body wall4 = BodyFactory.getInstance(Objects.world)
-                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
-                        72,72,16*55f,16*2f);
-        Body wall5 = BodyFactory.getInstance(Objects.world)
-                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
-                        952,72,16*55f,16*2f);
+                        576 +8,112 + 8,16,16);
         entity.add(b2dBodyComponent);
-        wall.setUserData("cannot go");
-        wall0.setUserData("cannot go");
-        wall1.setUserData("cannot go");
-        wall2.setUserData("cannot go");
-        wall3.setUserData("cannot go");
-        wall4.setUserData("cannot go");
-        wall5.setUserData("cannot go");
         return entity;
     }
 

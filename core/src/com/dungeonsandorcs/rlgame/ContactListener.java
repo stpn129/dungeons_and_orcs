@@ -13,7 +13,7 @@ public class ContactListener implements com.badlogic.gdx.physics.box2d.ContactLi
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
         System.out.println(fa.getBody().getType()+" has hit "+ fb.getBody().getType());
-        if(fa.getBody().getUserData().equals("cannot go")){
+        if(fa.getBody().getType().equals(BodyDef.BodyType.StaticBody)){
             System.out.print("cannot go");
         }
     }
