@@ -58,5 +58,8 @@ public class PlayerControlSystem extends IteratingSystem {
 
         }
         body.setTransform(position,0);
+        int s1 = (int) cPos.x;
+        int s2 = (int) cPos.y ;
+        System.out.println("x="+s1+","+"y="+s2);
     }
 }
