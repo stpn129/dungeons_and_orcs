@@ -47,7 +47,7 @@ public class GameScreen extends BasicScreen {
         Objects.spriteBatch.setProjectionMatrix(Objects.camera.combined);
 
 
-        TiledMap map = new TmxMapLoader().load("maps/1bitpack_kenney/Tilemap/level.tmx");
+        TiledMap map = new TmxMapLoader().load("maps/Tilemap/level.tmx");
         float unitScale = 1/16f;
         renderer = new OrthogonalTiledMapRenderer(map, unitScale);
 
