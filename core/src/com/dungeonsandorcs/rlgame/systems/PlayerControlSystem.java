@@ -19,6 +19,8 @@ import com.dungeonsandorcs.rlgame.components.TextureComponent;
 import com.dungeonsandorcs.rlgame.controllers.KeyboardController;
 import com.dungeonsandorcs.rlgame.utils.ComponentUtil;
 
+import static com.dungeonsandorcs.rlgame.systems.RenderSystem.cPos;
+
 public class PlayerControlSystem extends IteratingSystem {
     public PlayerControlSystem() {
         super(Family.all(PlayerComponent.class).get());
@@ -31,14 +33,29 @@ public class PlayerControlSystem extends IteratingSystem {
         Vector2 position = body.getTransform().getPosition();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
-            position = position.add(0, AppConstants.SPEED);
+            if (cPos.y < 936  ){
+                position = position.add(0, AppConstants.SPEED);
+
+            }
 
         } if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-            position = position.add(0,-AppConstants.SPEED);
+            if (cPos.y > 8) {
+                position = position.add(0,-AppConstants.SPEED);
+
+            }
         } if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-            position = position.add(AppConstants.SPEED,0);
+            if(cPos.x < 1000 ) {
+
+                position = position.add(AppConstants.SPEED, 0);
+            }
+
         } if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
-            position = position.add(-AppConstants.SPEED,0);
+            if(cPos.x >8 ){
+                position = position.add(-AppConstants.SPEED,0);
+
+            }
+
+
         }
         body.setTransform(position,0);
     }

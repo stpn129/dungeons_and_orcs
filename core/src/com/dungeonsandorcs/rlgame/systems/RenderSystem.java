@@ -16,13 +16,16 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.dungeonsandorcs.rlgame.components.B2dBodyComponent;
 import com.dungeonsandorcs.rlgame.components.PlayerComponent;
 import com.dungeonsandorcs.rlgame.utils.ComponentUtil;
+import com.dungeonsandorcs.rlgame.utils.Objects;
 
 import static com.dungeonsandorcs.rlgame.utils.Objects.spriteBatch;
 
 public class RenderSystem extends IteratingSystem {
    public OrthogonalTiledMapRenderer renderer0;
 
-
+   private static final float hero_width = 16f;
+   private static final float hero_height = 16f;
+   public static Vector2 cPos;
 
     public RenderSystem( OrthogonalTiledMapRenderer renderer0) {
         super(Family.all(PlayerComponent.class,B2dBodyComponent.class).get());
@@ -40,12 +43,16 @@ public class RenderSystem extends IteratingSystem {
         Body body =  b2dBodyComponent.body;
         Sprite sprite = new Sprite(new Texture("Creatures/hero.png"));
         Vector2 pos = new Vector2();
+         cPos = new Vector2();
 
         pos.set(body.getPosition());
-        sprite.setPosition(pos.x, pos.y);
+
+        cPos.x = pos.x - hero_width/2;
+        cPos.y = pos.y - hero_height/2;
+        sprite.setPosition(cPos.x, cPos.y);
         float rotation = (float) Math.toDegrees(body.getAngle());
         sprite.setRotation(rotation);
-        batch.draw(sprite,pos.x,pos.y);
+        batch.draw(sprite,cPos.x,cPos.y);
         batch.end();
 
     }

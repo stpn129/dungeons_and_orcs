@@ -27,14 +27,14 @@ public class EntityUtils {
 
         Body body = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(AppConstants.Material.RUBBER, BodyDef.BodyType.StaticBody,
-                        0, 0, 16f, 16f);
+                        520f, 8f, 16f, 16f);
         b2dBodyComponent.body = body;
-Body bodyEnemy = BodyFactory.getInstance(Objects.world)
-        .makeBoxPolyBody(AppConstants.Material.RUBBER,BodyDef.BodyType.StaticBody,
-                2,2,16f,16f);
-        Body wall = BodyFactory.getInstance(Objects.world)
-                .makeBoxPolyBody(AppConstants.Material.RUBBER,BodyDef.BodyType.StaticBody,
-                        5,5,16f,56*16f);
+//Body bodyEnemy = BodyFactory.getInstance(Objects.world)
+//        .makeBoxPolyBody(AppConstants.Material.RUBBER,BodyDef.BodyType.StaticBody,
+//                2,2,16f,16f);
+//        Body wall = BodyFactory.getInstance(Objects.world)
+//                .makeBoxPolyBody(AppConstants.Material.RUBBER,BodyDef.BodyType.StaticBody,
+//                        5,5,16f,56*16f);
         entity.add(b2dBodyComponent);
         return entity;
     }

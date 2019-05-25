@@ -29,8 +29,8 @@ public class AppConstants {
     public static enum Shape {
         SQUARE, CIRCLE, PEGAGON, ARROW
     }
-    public static float SPEED = 1f;
-    public static float CAMERASPEED = 0.2f;
+    public static float SPEED = 16f;
+    public static float CAMERASPEED = 2f;
 
 
 }

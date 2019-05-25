@@ -1,10 +1,12 @@
 package com.dungeonsandorcs.rlgame.screens;
 
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector3;
 import com.dungeonsandorcs.rlgame.B2dContactListener;
 import com.dungeonsandorcs.rlgame.DungeonGame;
 import com.badlogic.ashley.core.PooledEngine;
@@ -26,6 +28,8 @@ import com.dungeonsandorcs.rlgame.utils.BodyFactory;
 import com.dungeonsandorcs.rlgame.utils.EntityUtils;
 import com.dungeonsandorcs.rlgame.utils.Objects;
 
+import static com.dungeonsandorcs.rlgame.systems.RenderSystem.cPos;
+
 public class GameScreen extends BasicScreen {
 
     private OrthographicCamera cam;
@@ -39,9 +43,12 @@ public class GameScreen extends BasicScreen {
 
     public GameScreen(DungeonGame game) {
         super(game);
+
+
         controller = new KeyboardController();
         Objects.world = new World(new Vector2(0, -0), true);
         Objects.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
         Objects.camera.setToOrtho(false, 16, 16);
         Objects.spriteBatch = new SpriteBatch();
         Objects.spriteBatch.setProjectionMatrix(Objects.camera.combined);
