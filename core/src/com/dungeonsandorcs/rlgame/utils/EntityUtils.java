@@ -29,9 +29,12 @@ public class EntityUtils {
                 .makeBoxPolyBody(AppConstants.Material.RUBBER, BodyDef.BodyType.StaticBody,
                         520f, 8f, 16f, 16f);
         b2dBodyComponent.body = body;
-//Body bodyEnemy = BodyFactory.getInstance(Objects.world)
-//        .makeBoxPolyBody(AppConstants.Material.RUBBER,BodyDef.BodyType.StaticBody,
-//                2,2,16f,16f);
+Body Enemy = BodyFactory.getInstance(Objects.world)
+        .makeBoxPolyBody(AppConstants.Material.RUBBER,BodyDef.BodyType.StaticBody,
+                536,56,16f,16f);
+Body Enemy0 = BodyFactory.getInstance(Objects.world)
+        .makeBoxPolyBody(AppConstants.Material.RUBBER,BodyDef.BodyType.StaticBody,
+                504,56,16f,16f);
       Body wall = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(AppConstants.Material.RUBBER,BodyDef.BodyType.StaticBody,
                        72,72,16f,200*16f);

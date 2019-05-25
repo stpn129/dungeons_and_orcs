@@ -42,6 +42,14 @@ public class RenderSystem extends IteratingSystem {
         B2dBodyComponent b2dBodyComponent = ComponentUtil.B_2_D_BODY_COMPONENT_MAPPER.get(entity);
         Body body =  b2dBodyComponent.body;
         Sprite sprite = new Sprite(new Texture("Creatures/hero.png"));
+
+        //enemies
+        Sprite enemy = new Sprite(new Texture("Creatures/enemy1.png"));
+        Sprite enemy0 = new Sprite(new Texture("Creatures/enemy2.png"));
+        enemy.setPosition(528 ,48);
+        enemy.setPosition(496,48);
+
+
         Vector2 pos = new Vector2();
          cPos = new Vector2();
 
@@ -53,6 +61,9 @@ public class RenderSystem extends IteratingSystem {
         float rotation = (float) Math.toDegrees(body.getAngle());
         sprite.setRotation(rotation);
         batch.draw(sprite,cPos.x,cPos.y);
+        batch.draw(enemy,528,48);
+        batch.draw(enemy,496,48);
+
         batch.end();
 
     }
