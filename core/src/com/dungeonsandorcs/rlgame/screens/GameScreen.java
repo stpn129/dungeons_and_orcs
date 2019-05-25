@@ -42,13 +42,13 @@ public class GameScreen extends BasicScreen {
         controller = new KeyboardController();
         Objects.world = new World(new Vector2(0, -0), true);
         Objects.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        Objects.camera.setToOrtho(false, 32, 32);
+        Objects.camera.setToOrtho(false, 16, 16);
         Objects.spriteBatch = new SpriteBatch();
         Objects.spriteBatch.setProjectionMatrix(Objects.camera.combined);
 
 
         TiledMap map = new TmxMapLoader().load("maps/Tilemap/level.tmx");
-        float unitScale = 1/16f;
+        float unitScale = 1f;
         renderer = new OrthogonalTiledMapRenderer(map, unitScale);
 
 
@@ -73,6 +73,8 @@ public class GameScreen extends BasicScreen {
 
     @Override
     public void render(float delta) {
+        Objects.camera.zoom = 10f;
+
         Gdx.gl.glClearColor(0f, 0f, 0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 

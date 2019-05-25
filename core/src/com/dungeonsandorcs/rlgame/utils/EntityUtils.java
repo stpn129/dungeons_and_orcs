@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.dungeonsandorcs.rlgame.AppConstants;
 import com.dungeonsandorcs.rlgame.components.B2dBodyComponent;
+import com.dungeonsandorcs.rlgame.components.EnemyComponent;
 import com.dungeonsandorcs.rlgame.components.PlayerComponent;
 
 public class EntityUtils {
@@ -19,14 +20,21 @@ public class EntityUtils {
         //add component to Entity
 
         PlayerComponent playerComponent = new PlayerComponent();
-
+        EnemyComponent enemyComponent = new EnemyComponent();
+        entity.add(enemyComponent);
         entity.add(playerComponent);
         B2dBodyComponent b2dBodyComponent = new B2dBodyComponent();
+
         Body body = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(AppConstants.Material.RUBBER, BodyDef.BodyType.StaticBody,
-                        0, 0, 1f, 1f);
+                        0, 0, 16f, 16f);
         b2dBodyComponent.body = body;
-
+Body bodyEnemy = BodyFactory.getInstance(Objects.world)
+        .makeBoxPolyBody(AppConstants.Material.RUBBER,BodyDef.BodyType.StaticBody,
+                2,2,16f,16f);
+        Body wall = BodyFactory.getInstance(Objects.world)
+                .makeBoxPolyBody(AppConstants.Material.RUBBER,BodyDef.BodyType.StaticBody,
+                        5,5,16f,56*16f);
         entity.add(b2dBodyComponent);
         return entity;
     }

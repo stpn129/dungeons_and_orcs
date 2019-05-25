@@ -26,11 +26,6 @@ public class CameraControllSystem extends EntitySystem {
 
         Objects.camera.position.lerp(coord, 0.1f);
 
-        if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
-            Objects.camera.zoom += 0.1f;
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.E)) {
-            Objects.camera.zoom -= 0.1f;
-        }
+
     }
 }
