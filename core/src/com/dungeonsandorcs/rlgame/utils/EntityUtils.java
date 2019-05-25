@@ -12,7 +12,7 @@ import com.dungeonsandorcs.rlgame.components.EnemyComponent;
 import com.dungeonsandorcs.rlgame.components.PlayerComponent;
 
 public class EntityUtils {
-    public static final Entity createPlayer() {
+    public static Entity createPlayer() {
         Entity entity = new Entity();
 
         //create components
@@ -26,7 +26,7 @@ public class EntityUtils {
         B2dBodyComponent b2dBodyComponent = new B2dBodyComponent();
 
         Body body = BodyFactory.getInstance(Objects.world)
-                .makeBoxPolyBody(AppConstants.Material.RUBBER, BodyDef.BodyType.StaticBody,
+                .makeBoxPolyBody(AppConstants.Material.RUBBER, BodyDef.BodyType.DynamicBody,
                         520f, 8f, 16f, 16f);
         b2dBodyComponent.body = body;
 Body Enemy = BodyFactory.getInstance(Objects.world)
@@ -57,6 +57,13 @@ Body Enemy0 = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(AppConstants.Material.RUBBER,BodyDef.BodyType.StaticBody,
                         952,72,16*55f,16*2f);
         entity.add(b2dBodyComponent);
+        wall.setUserData("cannot go");
+        wall0.setUserData("cannot go");
+        wall1.setUserData("cannot go");
+        wall2.setUserData("cannot go");
+        wall3.setUserData("cannot go");
+        wall4.setUserData("cannot go");
+        wall5.setUserData("cannot go");
         return entity;
     }
 

@@ -11,10 +11,7 @@ public class CheckCollisionSystem extends IteratingSystem {
     public CheckCollisionSystem(Family family) {
         super(Family.all(B2dBodyComponent.class).get());
     }
-    public static boolean isPlayerCanGoUp;
-    public static boolean isPlayerCanGoDown;
-    public static boolean isPlayerCanGoLeft;
-    public static boolean isPlayerCanGoRight;
+    public static boolean isPlayerCanGo;
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {

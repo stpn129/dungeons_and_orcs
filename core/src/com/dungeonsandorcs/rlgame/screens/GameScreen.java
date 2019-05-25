@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.dungeonsandorcs.rlgame.B2dContactListener;
+import com.dungeonsandorcs.rlgame.ContactListener;
 import com.dungeonsandorcs.rlgame.DungeonGame;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
@@ -61,7 +62,7 @@ public class GameScreen extends BasicScreen {
 
         engine = new PooledEngine();
         Entity entityPlayer = EntityUtils.createPlayer();
-
+        world.setContactListener(new ContactListener());
         engine.addSystem(new RenderSystem(renderer));
         engine.addSystem(new DebugSystem());
         engine.addSystem(new PlayerControlSystem());
@@ -87,7 +88,6 @@ public class GameScreen extends BasicScreen {
 
         renderer.render();
         renderer.setView(Objects.camera);
-
         engine.update(delta);
 
     }

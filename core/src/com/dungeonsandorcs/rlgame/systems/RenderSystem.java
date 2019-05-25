@@ -16,6 +16,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.dungeonsandorcs.rlgame.components.B2dBodyComponent;
 import com.dungeonsandorcs.rlgame.components.PlayerComponent;
 import com.dungeonsandorcs.rlgame.utils.ComponentUtil;
+import com.dungeonsandorcs.rlgame.utils.EntityUtils;
 import com.dungeonsandorcs.rlgame.utils.Objects;
 
 import static com.dungeonsandorcs.rlgame.utils.Objects.spriteBatch;
