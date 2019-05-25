@@ -30,4 +30,7 @@ public class AppConstants {
         SQUARE, CIRCLE, PEGAGON, ARROW
     }
     public static float SPEED = 1f;
+    public static float CAMERASPEED = 0.2f;
+
+
 }

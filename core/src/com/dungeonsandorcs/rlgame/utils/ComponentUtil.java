@@ -1,10 +1,11 @@
 package com.dungeonsandorcs.rlgame.utils;
 
 import com.badlogic.ashley.core.ComponentMapper;
-import com.badlogic.gdx.graphics.Texture;
 import com.dungeonsandorcs.rlgame.components.AnimationComponent;
 import com.dungeonsandorcs.rlgame.components.B2dBodyComponent;
+import com.dungeonsandorcs.rlgame.components.EnemyComponent;
 import com.dungeonsandorcs.rlgame.components.PlayerComponent;
+import com.dungeonsandorcs.rlgame.components.QuestComponent;
 import com.dungeonsandorcs.rlgame.components.ScoreComponent;
 import com.dungeonsandorcs.rlgame.components.TextureComponent;
 
@@ -14,4 +15,8 @@ public class ComponentUtil {
     public static final ComponentMapper<PlayerComponent> PLAYER_COMPONENT_MAPPER = ComponentMapper.getFor(PlayerComponent.class);
     public static final ComponentMapper<ScoreComponent> SCORE_COMPONENT_MAPPER = ComponentMapper.getFor(ScoreComponent.class);
     public static final ComponentMapper<TextureComponent> TEXTURE_COMPONENT_MAPPER = ComponentMapper.getFor(TextureComponent.class);
+    public static final ComponentMapper<EnemyComponent> ENEMY_COMPONENT_MAPPER = ComponentMapper.getFor(EnemyComponent.class);
+    public static final ComponentMapper<QuestComponent> QUEST_COMPONENT_MAPPER = ComponentMapper.getFor(QuestComponent.class);
+
+
 }

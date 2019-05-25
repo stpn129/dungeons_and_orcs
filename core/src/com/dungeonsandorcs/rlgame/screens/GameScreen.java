@@ -42,13 +42,13 @@ public class GameScreen extends BasicScreen {
         controller = new KeyboardController();
         Objects.world = new World(new Vector2(0, -0), true);
         Objects.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        Objects.camera.setToOrtho(false, 30, 30);
+        Objects.camera.setToOrtho(false, 32, 32);
         Objects.spriteBatch = new SpriteBatch();
         Objects.spriteBatch.setProjectionMatrix(Objects.camera.combined);
 
 
-        TiledMap map = new TmxMapLoader().load("maps/Tilemap/sample_fantasy.tmx");
-        float unitScale = 1 / 16f;
+        TiledMap map = new TmxMapLoader().load("maps/1bitpack_kenney/Tilemap/level.tmx");
+        float unitScale = 1/16f;
         renderer = new OrthogonalTiledMapRenderer(map, unitScale);
 
 

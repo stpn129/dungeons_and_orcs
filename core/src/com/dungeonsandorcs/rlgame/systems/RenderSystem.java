@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.dungeonsandorcs.rlgame.components.B2dBodyComponent;
 import com.dungeonsandorcs.rlgame.components.PlayerComponent;
@@ -38,13 +39,13 @@ public class RenderSystem extends IteratingSystem {
         B2dBodyComponent b2dBodyComponent = ComponentUtil.B_2_D_BODY_COMPONENT_MAPPER.get(entity);
         Body body =  b2dBodyComponent.body;
         Sprite sprite = new Sprite(new Texture("Creatures/hero.png"));
+        Vector2 pos = new Vector2();
 
-        float posX = body.getPosition().x;
-        float posY = body.getPosition().y;
+        pos.set(body.getPosition());
+        sprite.setPosition(pos.x, pos.y);
         float rotation = (float) Math.toDegrees(body.getAngle());
-        sprite.setPosition(posX, posY);
         sprite.setRotation(rotation);
-        batch.draw(sprite,posX,posY);
+        batch.draw(sprite,pos.x,pos.y);
         batch.end();
 
     }

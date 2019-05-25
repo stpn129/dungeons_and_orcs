@@ -15,16 +15,13 @@ public class CameraControllSystem extends EntitySystem {
     @Override
     public void update(float deltaTime) {
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            coord = coord.add(new Vector3(0, AppConstants.SPEED, 0));
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            coord = coord.add(new Vector3(0, -AppConstants.SPEED, 0));
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            coord = coord.add(new Vector3(AppConstants.SPEED, 0, 0));
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            coord = coord.add(new Vector3(-AppConstants.SPEED, 0, 0));
+            coord = coord.add(new Vector3(0, AppConstants.CAMERASPEED, 0));
+        } if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+            coord = coord.add(new Vector3(0, -AppConstants.CAMERASPEED, 0));
+        } if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            coord = coord.add(new Vector3(AppConstants.CAMERASPEED, 0, 0));
+        } if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            coord = coord.add(new Vector3(-AppConstants.CAMERASPEED, 0, 0));
         }
 
         Objects.camera.position.lerp(coord, 0.1f);
