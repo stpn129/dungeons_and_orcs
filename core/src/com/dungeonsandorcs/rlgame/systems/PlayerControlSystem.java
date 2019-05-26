@@ -32,12 +32,9 @@ public class PlayerControlSystem extends IteratingSystem {
         Body body =  b2dBodyComponent.body;
         Vector2 position = body.getTransform().getPosition();
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
-            if (cPos.y < 504){
-
-                    position = position.add(0, AppConstants.SPEED);
-
-
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            if (cPos.y < 504) {
+                position = position.add(0, AppConstants.SPEED);
 
             }
 
