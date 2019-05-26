@@ -86,6 +86,20 @@ public class EntityUtils {
         Body stranger = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
                         576 +8,112 + 8,16,16);
+        house.setUserData("cgo");
+        house0.setUserData("cgo");
+        house1.setUserData("cgo");
+        house2.setUserData("cgo");
+        house3.setUserData("cgo");
+        house4.setUserData("cgo");
+        house5.setUserData("cgo");
+        house6.setUserData("cgo");
+        house7.setUserData("cgo");
+        house8.setUserData("cgo");
+        house9.setUserData("cgo");
+        house10.setUserData("cgo");
+        house11.setUserData("cgo");
+
         entity.add(b2dBodyComponent);
         return entity;
     }

@@ -29,38 +29,40 @@ public class PlayerControlSystem extends IteratingSystem {
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         B2dBodyComponent b2dBodyComponent = ComponentUtil.B_2_D_BODY_COMPONENT_MAPPER.get(entity);
-        Body body =  b2dBodyComponent.body;
+        Body body = b2dBodyComponent.body;
         Vector2 position = body.getTransform().getPosition();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            if (cPos.y < 504) {
+            if (cPos.y < 504 && AppConstants.isPlayerCanGo) {
                 position = position.add(0, AppConstants.SPEED);
 
             }
 
-        } if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN) ){
-            if (cPos.y > 8 && (cPos.x != 520 && cPos.y > 96)) {
-                position = position.add(0,-AppConstants.SPEED);
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN) ) {
+            if (cPos.y > 8 && (cPos.x != 520 && cPos.y > 96) && AppConstants.isPlayerCanGo) {
+                position = position.add(0, -AppConstants.SPEED);
 
             }
-        } if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
-            if(cPos.x < 920 && (cPos.x !=520 && cPos.y > 80)) {
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
+            if (cPos.x < 920 && (cPos.x != 520 && cPos.y > 80) && AppConstants.isPlayerCanGo) {
 
                 position = position.add(AppConstants.SPEED, 0);
             }
 
-        } if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT) ){
-            if(cPos.x >232 && (cPos.x !=520 && cPos.y > 80)){
-                position = position.add(-AppConstants.SPEED,0);
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT) ) {
+            if (cPos.x > 232 && (cPos.x != 520 && cPos.y > 80)&&AppConstants.isPlayerCanGo) {
+                position = position.add(-AppConstants.SPEED, 0);
 
             }
 
 
-
         }
-        body.setTransform(position,0);
+        body.setTransform(position, 0);
         int s1 = (int) cPos.x;
-        int s2 = (int) cPos.y ;
-        System.out.println("x="+s1+","+"y="+s2);
+        int s2 = (int) cPos.y;
+        System.out.println("x=" + s1 + "," + "y=" + s2);
     }
 }

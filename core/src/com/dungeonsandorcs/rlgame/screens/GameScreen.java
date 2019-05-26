@@ -16,6 +16,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.dungeonsandorcs.rlgame.controllers.KeyboardController;
 
 import com.dungeonsandorcs.rlgame.systems.CameraControllSystem;
+import com.dungeonsandorcs.rlgame.systems.CheckCollisionSystem;
 import com.dungeonsandorcs.rlgame.systems.DebugSystem;
 import com.dungeonsandorcs.rlgame.systems.PlayerControlSystem;
 import com.dungeonsandorcs.rlgame.systems.RenderSystem;
@@ -55,6 +56,7 @@ public class GameScreen extends BasicScreen {
         engine = new PooledEngine();
         Entity entityPlayer = EntityUtils.createPlayer();
 
+        engine.addSystem(new CheckCollisionSystem());
         engine.addSystem(new RenderSystem(renderer));
         engine.addSystem(new DebugSystem());
         engine.addSystem(new PlayerControlSystem());

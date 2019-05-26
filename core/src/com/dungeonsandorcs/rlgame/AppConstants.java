@@ -34,5 +34,7 @@ public class AppConstants {
     public static boolean  isQuest1Started = false;
     public static boolean isIsQuest1Ended = false;
     public static boolean isDiamondCatched = false;
+    public static boolean isPlayerCanGo = true;
+
 
 }
