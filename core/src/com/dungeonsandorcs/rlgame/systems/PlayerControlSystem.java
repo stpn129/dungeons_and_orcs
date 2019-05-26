@@ -33,12 +33,15 @@ public class PlayerControlSystem extends IteratingSystem {
         Vector2 position = body.getTransform().getPosition();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
-            if (cPos.y < 504  ){
-                position = position.add(0, AppConstants.SPEED);
+            if (cPos.y < 504){
+
+                    position = position.add(0, AppConstants.SPEED);
+
+
 
             }
 
-        } if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
+        } if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN) ){
             if (cPos.y > 8 && (cPos.x != 520 && cPos.y > 96)) {
                 position = position.add(0,-AppConstants.SPEED);
 
@@ -49,11 +52,12 @@ public class PlayerControlSystem extends IteratingSystem {
                 position = position.add(AppConstants.SPEED, 0);
             }
 
-        } if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
+        } if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT) ){
             if(cPos.x >232 && (cPos.x !=520 && cPos.y > 80)){
                 position = position.add(-AppConstants.SPEED,0);
 
             }
+
 
 
         }

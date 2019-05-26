@@ -10,6 +10,7 @@ import com.dungeonsandorcs.rlgame.AppConstants;
 import com.dungeonsandorcs.rlgame.components.B2dBodyComponent;
 import com.dungeonsandorcs.rlgame.components.EnemyComponent;
 import com.dungeonsandorcs.rlgame.components.PlayerComponent;
+import com.dungeonsandorcs.rlgame.components.QuestComponent;
 
 import static com.dungeonsandorcs.rlgame.AppConstants.Material.RUBBER;
 
@@ -23,8 +24,10 @@ public class EntityUtils {
 
         PlayerComponent playerComponent = new PlayerComponent();
         EnemyComponent enemyComponent = new EnemyComponent();
+        QuestComponent questComponent = new QuestComponent();
         entity.add(enemyComponent);
         entity.add(playerComponent);
+        entity.add(questComponent);
         B2dBodyComponent b2dBodyComponent = new B2dBodyComponent();
 
         Body body = BodyFactory.getInstance(Objects.world)
@@ -46,7 +49,7 @@ public class EntityUtils {
                         592 +8,144 + 8,16*5,16*3f);
         Body diamond = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
-                        400 +8,144 + 8,16,16);
+                        240 +8,384 + 8,16,16);
         Body stranger = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
                         576 +8,112 + 8,16,16);

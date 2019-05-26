@@ -31,6 +31,8 @@ public class AppConstants {
     }
     public static float SPEED = 16f;
     public static float CAMERASPEED = 2f;
-
+    public static boolean  isQuest1Started = false;
+    public static boolean isIsQuest1Ended = false;
+    public static boolean isDiamondCatched = false;
 
 }

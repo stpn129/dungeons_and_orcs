@@ -27,7 +27,7 @@ public class MenuScreen extends BasicScreen {
     public void show() {
         Table table = new Table();
         table.setFillParent(true);
-        table.setDebug(true);
+        table.setDebug(false);
 
         stage.addActor(table);
 

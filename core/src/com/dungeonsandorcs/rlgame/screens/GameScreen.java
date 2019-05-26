@@ -1,18 +1,12 @@
 package com.dungeonsandorcs.rlgame.screens;
 
 import com.badlogic.ashley.core.Entity;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Vector3;
-import com.dungeonsandorcs.rlgame.B2dContactListener;
-import com.dungeonsandorcs.rlgame.ContactListener;
 import com.dungeonsandorcs.rlgame.DungeonGame;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -28,8 +22,6 @@ import com.dungeonsandorcs.rlgame.systems.RenderSystem;
 import com.dungeonsandorcs.rlgame.utils.BodyFactory;
 import com.dungeonsandorcs.rlgame.utils.EntityUtils;
 import com.dungeonsandorcs.rlgame.utils.Objects;
-
-import static com.dungeonsandorcs.rlgame.systems.RenderSystem.cPos;
 
 public class GameScreen extends BasicScreen {
 
@@ -69,7 +61,6 @@ public class GameScreen extends BasicScreen {
         engine.addSystem(new CameraControllSystem());
         engine.addEntity(entityPlayer);
         renderer.setView(Objects.camera);
-
 
     }
 
