@@ -92,13 +92,14 @@ public class RenderSystem extends IteratingSystem {
         }
 
 //        batch.draw(text,0,0);
+        if (AppConstants.isQuest1Started && !AppConstants.isIsQuest1Ended&& !AppConstants.isDiamondCatched){
+            batch.draw(diamond,240,384);
+        }
         batch.draw(sprite,cPos.x,cPos.y);
         batch.draw(enemy,528,48);
         batch.draw(enemy0,496,48);
 
-        if (AppConstants.isQuest1Started && !AppConstants.isIsQuest1Ended&& !AppConstants.isDiamondCatched){
-            batch.draw(diamond,240,384);
-        }
+
         batch.draw(stranger,576,112);
         batch.end();
 

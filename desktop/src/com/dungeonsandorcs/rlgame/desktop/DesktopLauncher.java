@@ -10,6 +10,7 @@ public class DesktopLauncher {
 		config.width = 400;
 		config.height = 400;
 		config.resizable = false;
+		config.title = "Dungeons&Orcs";
 		new LwjglApplication(new DungeonGame(), config);
 	}
 }
