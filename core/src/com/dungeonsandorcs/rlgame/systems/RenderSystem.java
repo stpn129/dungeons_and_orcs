@@ -55,11 +55,15 @@ public class RenderSystem extends IteratingSystem {
         Body body =  b2dBodyComponent.body;
         Sprite sprite = new Sprite(new Texture("Creatures/hero.png"));
 
+
+
+
         //enemies
         Sprite enemy = new Sprite(new Texture("Creatures/enemy1.png"));
         Sprite enemy0 = new Sprite(new Texture("Creatures/enemy2.png"));
 
         //quests
+        Sprite text = new Sprite(new Texture("maps/Tilemap/text.png"));
         Sprite diamond = new Sprite(new Texture("Creatures/diamond.png"));
         Sprite stranger = new Sprite(new Texture("Creatures/stranger.png"));
 
@@ -86,9 +90,12 @@ public class RenderSystem extends IteratingSystem {
         }else if (AppConstants.isDiamondCatched && cPos.x==576 && cPos.y == 96){
             AppConstants.isIsQuest1Ended = true;
         }
+
+//        batch.draw(text,0,0);
         batch.draw(sprite,cPos.x,cPos.y);
         batch.draw(enemy,528,48);
         batch.draw(enemy0,496,48);
+
         if (AppConstants.isQuest1Started && !AppConstants.isIsQuest1Ended&& !AppConstants.isDiamondCatched){
             batch.draw(diamond,240,384);
         }

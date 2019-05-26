@@ -34,12 +34,12 @@ public class MenuScreen extends BasicScreen {
         Skin skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
 
         TextButton newGame = new TextButton("New Game", skin);
-        TextButton preferences = new TextButton("Preferences", skin);
+    //    TextButton preferences = new TextButton("Preferences", skin);
         TextButton exit = new TextButton("Exit", skin);
 
         table.add(newGame).fillX().uniformX();
         table.row().pad(10, 0, 10, 0);
-        table.add(preferences).fillX().uniformX();
+      //  table.add(preferences).fillX().uniformX();
         table.row();
         table.add(exit).fillX().uniformX();
 
@@ -51,13 +51,13 @@ public class MenuScreen extends BasicScreen {
             }
         });
 
-        preferences.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                Gdx.app.log("Preferences","Preferences");
-            }
-        });
-
+//        preferences.addListener(new ChangeListener() {
+//            @Override
+//            public void changed(ChangeEvent event, Actor actor) {
+//                Gdx.app.log("Preferences","Preferences");
+//            }
+//        });
+//
         exit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -65,7 +65,7 @@ public class MenuScreen extends BasicScreen {
                 Gdx.app.exit();
             }
         });
-    }
+   }
 
     @Override
     public void resize(int width, int height) {

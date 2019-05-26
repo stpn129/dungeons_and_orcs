@@ -43,10 +43,43 @@ public class EntityUtils {
 
         Body house = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
-                        520,264,16*5,16*3f);
+                        256+8,144+8,16*5,16*3f);
         Body house0 = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
-                        592 +8,144 + 8,16*5,16*3f);
+                        368+8,208+8,16*5,16*3f);
+        Body house1 = BodyFactory.getInstance(Objects.world)
+                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
+                        352+8,256+8,16*5,16*3f);
+        Body house2 = BodyFactory.getInstance(Objects.world)
+                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
+                        416+8,368+8,16*10,10*16f);
+        Body house3 = BodyFactory.getInstance(Objects.world)
+                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
+                        512+8,256+8,16*5,3*16f);
+        Body house4 = BodyFactory.getInstance(Objects.world)
+                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
+                        608+8,400+8,16*9,8*16f);
+        Body house5 = BodyFactory.getInstance(Objects.world)
+                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
+                        768+8,288+8,16*3,3*16f);
+        Body house6 = BodyFactory.getInstance(Objects.world)
+                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
+                        576+8,144+8,16*4,3*16f);
+        Body house7 = BodyFactory.getInstance(Objects.world)
+                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
+                        656+8,208+8,16*6,3*16f);
+        Body house8 = BodyFactory.getInstance(Objects.world)
+                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
+                        592+8,272+8,16*3,16*2f);
+        Body house9 = BodyFactory.getInstance(Objects.world)
+                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
+                        816+8,368+8,16*7,16*5f);
+        Body house10 = BodyFactory.getInstance(Objects.world)
+                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
+                        752+8,448+8,16*6,16*3f);
+        Body house11 = BodyFactory.getInstance(Objects.world)
+                .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
+                        656+8,496+8,16*3,16*2f);
         Body diamond = BodyFactory.getInstance(Objects.world)
                 .makeBoxPolyBody(RUBBER,BodyDef.BodyType.StaticBody,
                         240 +8,384 + 8,16,16);
