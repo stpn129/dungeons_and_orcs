@@ -13,18 +13,12 @@ import static com.dungeonsandorcs.rlgame.systems.RenderSystem.cPos;
 public class CameraControllSystem extends EntitySystem {
     private static Vector3 coord = new Vector3();
 
-
-
-
     @Override
     public void update(float deltaTime) {
         coord.x = cPos.x;
         coord.y = cPos.y;
         coord.z = 0;
 
-
         Objects.camera.position.lerp(coord, 0.1f);
-
-
     }
 }

@@ -12,15 +12,17 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import com.dungeonsandorcs.rlgame.AppConstants;
 import com.dungeonsandorcs.rlgame.components.B2dBodyComponent;
 import com.dungeonsandorcs.rlgame.utils.EntityUtils;
+import com.dungeonsandorcs.rlgame.utils.Objects;
 
 public class CheckCollisionSystem extends IteratingSystem implements ContactListener {
     public CheckCollisionSystem() {
         super(Family.all(B2dBodyComponent.class).get());
+        Objects.world.setContactListener(this);
     }
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-
+        entity.getComponent(B2dBodyComponent.class);
     }
 
     @Override
@@ -30,11 +32,7 @@ public class CheckCollisionSystem extends IteratingSystem implements ContactList
         Fixture fb = contact.getFixtureB();
         System.out.println(fa.getBody().getType()+" has hit "+ fb.getBody().getType());
 
-        if(fa.getBody().getUserData() == "cgo"){
-            AppConstants.isPlayerCanGo =false;
-        }else {
-            AppConstants.isPlayerCanGo = true;
-        }
+        AppConstants.isPlayerCanGo = fa.getBody().getUserData() != "cgo";
     }
 
     @Override

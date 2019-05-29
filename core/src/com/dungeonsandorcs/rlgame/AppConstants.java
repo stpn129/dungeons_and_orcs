@@ -1,4 +1,5 @@
 package com.dungeonsandorcs.rlgame;
+
 public class AppConstants {
     public static final int LOADING = 0;
     public static final int MENU = 1;
@@ -29,9 +30,15 @@ public class AppConstants {
     public static enum Shape {
         SQUARE, CIRCLE, PEGAGON, ARROW
     }
+
+    //Objects
+    public static float unitScale = 1f;
+    public static float viewportWidth = 16;
+    public static float viewportHeight = 16;
+
     public static float SPEED = 16f;
     public static float CAMERASPEED = 2f;
-    public static boolean  isQuest1Started = false;
+    public static boolean isQuest1Started = false;
     public static boolean isIsQuest1Ended = false;
     public static boolean isDiamondCatched = false;
     public static boolean isPlayerCanGo = true;
