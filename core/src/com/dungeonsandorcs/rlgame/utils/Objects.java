@@ -19,7 +19,7 @@ public class Objects {
     public static void create() {
         TiledMap map = new TmxMapLoader().load("maps/Tilemap/level.tmx");
 
-        world = new World(new Vector2(0, 0), true);
+        world = new World(new Vector2(0, 0), false);
 
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false, AppConstants.viewportWidth, AppConstants.viewportHeight);
@@ -32,9 +32,10 @@ public class Objects {
         renderer.setView(Objects.camera);
     }
 
-    public static void update() {
+    public static void update(float delta) {
         renderer.render();
         renderer.setView(Objects.camera);
+        Objects.world.step(delta,100,1);
     }
 
     public static void dispose() {

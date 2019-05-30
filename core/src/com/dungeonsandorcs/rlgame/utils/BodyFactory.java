@@ -38,7 +38,7 @@ public class BodyFactory {
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
 
-        switch (material) {
+        /*switch (material) {
             case RUBBER:
                 fixtureDef.density = 1f;
                 fixtureDef.friction = 0f;
@@ -51,8 +51,8 @@ public class BodyFactory {
                 break;
             case STEEL:
                 fixtureDef.density = 1f;
-                fixtureDef.friction = 0.3f;
-                fixtureDef.restitution = 0.1f;
+                fixtureDef.friction = 1f;
+                fixtureDef.restitution = 1f;
                 break;
             case STONE:
                 fixtureDef.density = 1f;
@@ -61,7 +61,7 @@ public class BodyFactory {
                 break;
             default:
                 throw new IllegalArgumentException("Wrong material: " + material);
-        }
+        }*/
 
         return fixtureDef;
     }
