@@ -44,8 +44,8 @@ public class AppConstants {
     public static float viewportWidth = 16;
     public static float viewportHeight = 16;
 
-    public static float SPEED = 8;//16f;
-    public static float CAMERASPEED = 2f;
+    public static float SPEED = 16f;
+    public static float TIME = 0.2f;
     public static boolean isQuest1Started = false;
     public static boolean isIsQuest1Ended = false;
     public static boolean isDiamondCatched = false;
