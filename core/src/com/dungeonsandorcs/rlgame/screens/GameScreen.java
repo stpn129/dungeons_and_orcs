@@ -1,108 +1,73 @@
 package com.dungeonsandorcs.rlgame.screens;
 
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.dungeonsandorcs.rlgame.DungeonGame;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.World;
+import com.dungeonsandorcs.rlgame.AppConstants;
+import com.dungeonsandorcs.rlgame.DungeonGame;
 import com.dungeonsandorcs.rlgame.controllers.KeyboardController;
-
 import com.dungeonsandorcs.rlgame.systems.CameraControllSystem;
-import com.dungeonsandorcs.rlgame.systems.CheckCollisionSystem;
+import com.dungeonsandorcs.rlgame.systems.ContactListenerSystem;
 import com.dungeonsandorcs.rlgame.systems.DebugSystem;
 import com.dungeonsandorcs.rlgame.systems.PlayerControlSystem;
 import com.dungeonsandorcs.rlgame.systems.RenderSystem;
-import com.dungeonsandorcs.rlgame.utils.BodyFactory;
 import com.dungeonsandorcs.rlgame.utils.EntityUtils;
 import com.dungeonsandorcs.rlgame.utils.Objects;
 
-public class GameScreen extends BasicScreen {
+import static com.dungeonsandorcs.rlgame.utils.EntityUtils.createHouse;
 
-    private OrthographicCamera cam;
-    private KeyboardController controller;
-    private SpriteBatch spriteBatch;
+public class GameScreen extends ObjectsScreen {
+
     private PooledEngine engine;
-    private World world;
-    private BodyFactory bodyFactory;
-    private TextureAtlas atlas;
-    private OrthogonalTiledMapRenderer renderer;
 
     public GameScreen(DungeonGame game) {
         super(game);
-
-
-        controller = new KeyboardController();
-        Objects.world = new World(new Vector2(0, -0), true);
-        Objects.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
-        Objects.camera.setToOrtho(false, 16, 16);
-        Objects.spriteBatch = new SpriteBatch();
-        Objects.spriteBatch.setProjectionMatrix(Objects.camera.combined);
-
-
-        TiledMap map = new TmxMapLoader().load("maps/Tilemap/level.tmx");
-        float unitScale = 1f;
-        renderer = new OrthogonalTiledMapRenderer(map, unitScale);
-
-
         engine = new PooledEngine();
-        Entity entityPlayer = EntityUtils.createPlayer();
-
-        engine.addSystem(new CheckCollisionSystem());
-        engine.addSystem(new RenderSystem(renderer));
+        engine.addSystem(new ContactListenerSystem());
+        engine.addSystem(new RenderSystem(Objects.renderer));
         engine.addSystem(new DebugSystem());
         engine.addSystem(new PlayerControlSystem());
         engine.addSystem(new CameraControllSystem());
-        engine.addEntity(entityPlayer);
-        renderer.setView(Objects.camera);
-
+        Gdx.input.setInputProcessor(new KeyboardController());
     }
 
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(controller);
+        engine.addEntity(EntityUtils.createPlayer());
+
+        engine.addEntity(createHouse(520f, 40f, 16f - AppConstants.EPS, 16f - AppConstants.EPS));
+        //engine.addEntity(createHouse(536, 56, 16f, 16f));
+        //engine.addEntity(createHouse(504, 56, 16f, 16f));
+        //engine.addEntity(createHouse(256 + 8, 144 + 8, 16 * 5, 16 * 3f));
+        //engine.addEntity(createHouse(368 + 8, 208 + 8, 16 * 5, 16 * 3f));
+        //engine.addEntity(createHouse(352 + 8, 256 + 8, 16 * 5, 16 * 3f));
+        //engine.addEntity(createHouse(416 + 8, 368 + 8, 16 * 10, 10 * 16f));
+        //engine.addEntity(createHouse(512 + 8, 256 + 8, 16 * 5, 3 * 16f));
+        //engine.addEntity(createHouse(608 + 8, 400 + 8, 16 * 9, 8 * 16f));
+        //engine.addEntity(createHouse(768 + 8, 288 + 8, 16 * 3, 3 * 16f));
+        //engine.addEntity(createHouse(576 + 8, 144 + 8, 16 * 4, 3 * 16f));
+        //engine.addEntity(createHouse(656 + 8, 208 + 8, 16 * 6, 3 * 16f));
+        //engine.addEntity(createHouse(592 + 8, 272 + 8, 16 * 3, 16 * 2f));
+        //engine.addEntity(createHouse(816 + 8, 368 + 8, 16 * 7, 16 * 5f));
+        //engine.addEntity(createHouse(752 + 8, 448 + 8, 16 * 6, 16 * 3f));
+        //engine.addEntity(createHouse(656 + 8, 496 + 8, 16 * 3, 16 * 2f));
+        //engine.addEntity(createHouse(240 + 8, 384 + 8, 16, 16));
+        //engine.addEntity(createHouse(576 + 8, 112 + 8, 16, 16));
     }
 
     @Override
     public void render(float delta) {
-        Objects.camera.zoom = 10f;
-
         Gdx.gl.glClearColor(0f, 0f, 0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        renderer.render();
-        renderer.setView(Objects.camera);
+        Objects.update(delta);
         engine.update(delta);
-
-    }
-
-    @Override
-    public void resize(int width, int height) {
-    }
-
-    @Override
-    public void pause() {
-    }
-
-    @Override
-    public void resume() {
-    }
-
-    @Override
-    public void hide() {
     }
 
     @Override
     public void dispose() {
+        Objects.dispose();
     }
 
 }

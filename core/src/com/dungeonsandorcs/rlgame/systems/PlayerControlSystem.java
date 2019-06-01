@@ -1,68 +1,87 @@
 package com.dungeonsandorcs.rlgame.systems;
 
-import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.dungeonsandorcs.rlgame.AppConstants;
-import com.dungeonsandorcs.rlgame.components.AnimationComponent;
 import com.dungeonsandorcs.rlgame.components.B2dBodyComponent;
 import com.dungeonsandorcs.rlgame.components.PlayerComponent;
-import com.dungeonsandorcs.rlgame.components.ScoreComponent;
-import com.dungeonsandorcs.rlgame.components.TextureComponent;
-import com.dungeonsandorcs.rlgame.controllers.KeyboardController;
 import com.dungeonsandorcs.rlgame.utils.ComponentUtil;
-
-import static com.dungeonsandorcs.rlgame.systems.RenderSystem.cPos;
+import com.dungeonsandorcs.rlgame.utils.Objects;
 
 public class PlayerControlSystem extends IteratingSystem {
+
     public PlayerControlSystem() {
         super(Family.all(PlayerComponent.class).get());
     }
 
+    private float elapsed;
+    private boolean mustRound = false;
+    private Vector2 toP = new Vector2();
+
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
+        elapsed += deltaTime;
         B2dBodyComponent b2dBodyComponent = ComponentUtil.B_2_D_BODY_COMPONENT_MAPPER.get(entity);
         Body body = b2dBodyComponent.body;
-        Vector2 position = body.getTransform().getPosition();
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            if (cPos.y < 504 && AppConstants.isPlayerCanGo) {
-                position = position.add(0, AppConstants.SPEED);
-
+        if (elapsed <= AppConstants.TIME) {
+            body.setLinearVelocity(toP);
+        } else {
+            if (mustRound) {
+                b2dBodyComponent.body.setTransform(norm(body.getPosition()), 0);
+                mustRound = false;
+            }
+            body.setLinearVelocity(0, 0);
+            if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+                move(new Vector2(0, AppConstants.SPEED / AppConstants.TIME));
             }
 
-        }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN) ) {
-            if (cPos.y > 8 && (cPos.x != 520 && cPos.y > 96) && AppConstants.isPlayerCanGo) {
-                position = position.add(0, -AppConstants.SPEED);
-
-            }
-        }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
-            if (cPos.x < 920 && (cPos.x != 520 && cPos.y > 80) && AppConstants.isPlayerCanGo) {
-
-                position = position.add(AppConstants.SPEED, 0);
+            if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+                move(new Vector2(0, -AppConstants.SPEED / AppConstants.TIME));
             }
 
-        }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT) ) {
-            if (cPos.x > 232 && (cPos.x != 520 && cPos.y > 80)&&AppConstants.isPlayerCanGo) {
-                position = position.add(-AppConstants.SPEED, 0);
-
+            if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
+                move(new Vector2(AppConstants.SPEED / AppConstants.TIME, 0));
             }
 
-
+            if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
+                move(new Vector2(-AppConstants.SPEED / AppConstants.TIME, 0));
+            }
         }
-        body.setTransform(position, 0);
-        int s1 = (int) cPos.x;
-        int s2 = (int) cPos.y;
-        System.out.println("x=" + s1 + "," + "y=" + s2);
+
+        // TODO: 2019-05-30 Remove after testing
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+            Gdx.app.exit();
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.O)) {
+            System.out.println("Reset");
+            b2dBodyComponent.body.setTransform(520f, 8f, 0);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.E)) {
+            Objects.camera.zoom += 0.3f;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
+            Objects.camera.zoom -= 0.3f;
+        }
+    }
+
+    private void move(Vector2 direct) {
+        elapsed = 0;
+        toP = direct;
+        mustRound = true;
+    }
+
+    //-8 or 8 because start coordinates are not do not divide integrally by 16
+    private Vector2 norm(Vector2 position) {
+        return new Vector2(round(position.x - 8) + 8, round(position.y - 8) + 8);
+    }
+
+    private float round(float i) {
+        return Math.round(i / AppConstants.SPEED) * AppConstants.SPEED;
     }
 }

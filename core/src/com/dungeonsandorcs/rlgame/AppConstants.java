@@ -1,4 +1,5 @@
 package com.dungeonsandorcs.rlgame;
+
 public class AppConstants {
     public static final int LOADING = 0;
     public static final int MENU = 1;
@@ -6,6 +7,13 @@ public class AppConstants {
 
     public static final float APP_WIDTH = 200;
     public static final float APP_HEIGHT = 400;
+    public static final short MARIO_BIT = 2;
+    public static final short BRICK_BIT = 8;
+    public static final float MOVETOCELL_TIME = 1000f;
+    public static final float EPS = 0.1f;
+
+    //TODO: remove testing field
+    public static boolean testing = true;
 
     public enum Direction {
         UP,
@@ -19,7 +27,8 @@ public class AppConstants {
         DOWN_LEFT,
         LEFT,
         LEFT_DOWN,
-        LEFT_UP
+        LEFT_UP,
+        NONE
     }
 
     public static enum Material {
@@ -29,9 +38,15 @@ public class AppConstants {
     public static enum Shape {
         SQUARE, CIRCLE, PEGAGON, ARROW
     }
+
+    //Objects
+    public static float unitScale = 1f;
+    public static float viewportWidth = 16;
+    public static float viewportHeight = 16;
+
     public static float SPEED = 16f;
-    public static float CAMERASPEED = 2f;
-    public static boolean  isQuest1Started = false;
+    public static float TIME = 0.2f;
+    public static boolean isQuest1Started = false;
     public static boolean isIsQuest1Ended = false;
     public static boolean isDiamondCatched = false;
     public static boolean isPlayerCanGo = true;
