@@ -145,6 +145,56 @@ public class GameScreen extends ObjectsScreen {
 
         engine.addEntity(createHouse(352 + 8, 272 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
 
+        engine.addEntity(createHouse(368 + 8, 224 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+        engine.addEntity(createHouse(368 + 8, 208 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+        engine.addEntity(createHouse(384 + 8, 208 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+
+        engine.addEntity(createHouse(624 + 8, 336 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+        engine.addEntity(createHouse(592 + 8, 336 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+
+        engine.addEntity(createHouse(656 + 8, 336 + 8, 16*3  -  3*AppConstants.EPS, 16f -AppConstants.EPS));
+        engine.addEntity(createHouse(560 + 8, 336 + 8, 16*3  - 3*AppConstants.EPS, 16f -AppConstants.EPS));
+
+
+        engine.addEntity(createHouse(544 + 8, 400 + 8, 16  -AppConstants.EPS, 16f*7 - 7*AppConstants.EPS));
+
+        engine.addEntity(createHouse(672 + 8, 400 + 8, 16  -AppConstants.EPS, 16f*7 - 7*AppConstants.EPS));
+
+        engine.addEntity(createHouse(608 + 8, 448 + 8, 16*9  - 9*AppConstants.EPS, 16f - AppConstants.EPS));
+
+        engine.addEntity(createHouse(624 + 8, 416 + 8, 16*3  - 3*AppConstants.EPS, 16f - AppConstants.EPS));
+
+        engine.addEntity(createHouse(576 + 8, 416 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+
+        engine.addEntity(createHouse(624 + 8, 368 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+
+        engine.addEntity(createHouse(640 + 8, 352 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+
+        engine.addEntity(createHouse(640 + 8, 384 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+
+        engine.addEntity(createHouse(576 + 8, 352 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+
+        engine.addEntity(createHouse(576 + 8, 384 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+
+        engine.addEntity(createHouse(736 + 8, 80 + 8, 16*27  -  AppConstants.EPS, 16f - AppConstants.EPS));
+        engine.addEntity(createHouse(736 + 8, 64 + 8, 16*27  -  AppConstants.EPS, 16f - AppConstants.EPS));
+
+        engine.addEntity(createHouse(928 + 8, 304 + 8, 16  -  AppConstants.EPS, 16f*28 - 28*AppConstants.EPS));
+
+        engine.addEntity(createHouse(912 + 8, 96 + 8, 16  -  AppConstants.EPS, 16f*3 - 3*AppConstants.EPS));
+
+        engine.addEntity(createHouse(912 + 8, 208 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+        engine.addEntity(createHouse(912 + 8, 272 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+        engine.addEntity(createHouse(912 + 8, 368 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+        engine.addEntity(createHouse(912 + 8, 448 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+
+        engine.addEntity(createHouse(864 + 8, 512 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+
+        engine.addEntity(createHouse(832 + 8, 512 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+
+        engine.addEntity(createHouse(688 + 8, 384 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
+
+        engine.addEntity(createHouse(528 + 8, 368 + 8, 16  -  AppConstants.EPS, 16f -AppConstants.EPS));
 
         //engine.addEntity(createHouse(368 + 8, 208 + 8, 16 * 5, 16 * 3f));
         //engine.addEntity(createHouse(352 + 8, 256 + 8, 16 * 5, 16 * 3f));

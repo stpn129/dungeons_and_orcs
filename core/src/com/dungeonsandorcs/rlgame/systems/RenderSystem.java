@@ -83,7 +83,7 @@ public class RenderSystem extends IteratingSystem {
         sprite.setPosition(cPos.x, cPos.y);
         float rotation = (float) Math.toDegrees(body.getAngle());
         sprite.setRotation(rotation);
-        if (RenderSystem.cPos.x ==576&&RenderSystem.cPos.y == 96){
+        if (RenderSystem.cPos.x ==512&&RenderSystem.cPos.y == 64){
             AppConstants.isQuest1Started = true;
         }else if(cPos.x==240&&cPos.y == 384){
             AppConstants.isDiamondCatched = true;
