@@ -18,7 +18,7 @@ public class DebugSystem extends IteratingSystem {
     @Override
     public void update(float deltaTime) {
         super.update(deltaTime);
-        debugRenderer.render(Objects.world, Objects.camera.combined);
+    //    debugRenderer.render(Objects.world, Objects.camera.combined);
         Objects.camera.update();
 
     }
