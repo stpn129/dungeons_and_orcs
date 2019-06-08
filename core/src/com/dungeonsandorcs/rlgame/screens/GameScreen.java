@@ -50,8 +50,8 @@ public class GameScreen extends ObjectsScreen {
     public void show() {
         engine.addEntity(EntityUtils.createPlayer());
         setCollisionObjects(engine);
-
         BitmapFont font = new BitmapFont(Gdx.files.internal("glassy/skin/font-export.fnt"),Gdx.files.internal("glassy/skin/glassy-ui.png"),false);
+
 
 //
 //        Table table = new Table();
