@@ -102,7 +102,7 @@ public class RenderSystem extends IteratingSystem {
 
         batch.draw(stranger,576,112);
         batch.end();
-
+        System.out.println(cPos.x+ " " + cPos.y);
     }
 
 }
