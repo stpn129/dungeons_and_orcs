@@ -49,7 +49,12 @@ public class AppConstants {
     public static boolean isQuest1Started = false;
     public static boolean isIsQuest1Ended = false;
     public static boolean isDiamondCatched = false;
-    public static boolean isPlayerCanGo = true;
+   public static String questStarted = "quest 1 started: find a diamond, near the forest.";
+    public static String diamondCatched = "quest 1 : the oldman will take a diamond.";
+    public static String questEnded = "quest 1 is finished: thanks adventurer... ";
+    public static String messageDemo = "it was a demo of my game, thanks for watching";
+
+
 
 
 }

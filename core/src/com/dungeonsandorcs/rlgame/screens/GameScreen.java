@@ -4,11 +4,14 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.BinaryHeap;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.dungeonsandorcs.rlgame.AppConstants;
 import com.dungeonsandorcs.rlgame.DungeonGame;
@@ -22,6 +25,7 @@ import com.dungeonsandorcs.rlgame.utils.EntityUtils;
 import com.dungeonsandorcs.rlgame.utils.Objects;
 
 import static com.dungeonsandorcs.rlgame.utils.EntityUtils.createHouse;
+import static com.dungeonsandorcs.rlgame.utils.Objects.spriteBatch;
 
 public class GameScreen extends ObjectsScreen {
 
@@ -47,7 +51,9 @@ public class GameScreen extends ObjectsScreen {
         engine.addEntity(EntityUtils.createPlayer());
         setCollisionObjects(engine);
 
+        BitmapFont font = new BitmapFont(Gdx.files.internal("glassy/skin/font-export.fnt"),Gdx.files.internal("glassy/skin/glassy-ui.png"),false);
 
+//
 //        Table table = new Table();
 //        table.setFillParent(true);
 //        stage.addActor(table);
@@ -56,7 +62,8 @@ public class GameScreen extends ObjectsScreen {
 //        Button right = new Button();
 //        Button left = new Button();
 //
-//        up.addListener(new ClickListener())
+//        table.add(up).fillX().uniformX();
+//        table.row().pad(0,0,10,10);
 
         //   Skin skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
 
