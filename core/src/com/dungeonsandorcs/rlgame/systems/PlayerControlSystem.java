@@ -7,16 +7,74 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.dungeonsandorcs.rlgame.AppConstants;
 import com.dungeonsandorcs.rlgame.components.B2dBodyComponent;
 import com.dungeonsandorcs.rlgame.components.PlayerComponent;
+import com.dungeonsandorcs.rlgame.screens.GameScreen;
 import com.dungeonsandorcs.rlgame.utils.ComponentUtil;
 import com.dungeonsandorcs.rlgame.utils.Objects;
 
 public class PlayerControlSystem extends IteratingSystem {
+    public Button up;
+    public Button down;
+    public Button right;
+    public  Button left;
+    private Stage stage;
+
 
     public PlayerControlSystem() {
         super(Family.all(PlayerComponent.class).get());
+        this.up = GameScreen.up;
+        this.down = GameScreen.down;
+        this.right = GameScreen.right;
+        this.left = GameScreen.left;
+        stage = new Stage(new ScreenViewport());
+        Skin skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
+
+        up = new Button(skin);
+        down = new Button(skin);
+        right = new Button(skin);
+        left = new Button(skin);
+
+
+        up.setSize(10,10);
+        up.setPosition(300,200);
+        up.addListener(new ClickListener());
+        stage.addActor(up );
+
+        down.setSize(10,10);
+        down.setPosition(300,100);
+        down.addListener(new ClickListener()); //действие при нажатии
+        stage.addActor(down );
+
+        right.setSize(10,10);
+        right.setPosition(250,150);
+        right.addListener(new ClickListener()); //действие при нажатии
+        stage.addActor(right );
+
+        left.setSize(10,10);
+        left.setPosition(350,150);
+        stage.addActor(left );
+        right.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                move(new Vector2(0, AppConstants.SPEED / AppConstants.TIME));
+
+            }
+        });
+        left.addListener(new ClickListener());
+        down.addListener(new ClickListener());
+        up.addListener(new ClickListener());
+
+
+
     }
 
     private float elapsed;
@@ -52,6 +110,11 @@ public class PlayerControlSystem extends IteratingSystem {
             if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
                 move(new Vector2(-AppConstants.SPEED / AppConstants.TIME, 0));
             }
+
+
+
+
+
         }
 
         // TODO: 2019-05-30 Remove after testing

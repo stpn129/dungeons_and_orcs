@@ -5,6 +5,8 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -31,9 +33,16 @@ public class GameScreen extends ObjectsScreen {
 
     private PooledEngine engine;
     private Stage stage;
+    public static Button up;
+    public  static Button down;
+    public static Button right;
+    public  static Button left;
+
 
     public GameScreen(DungeonGame game) {
         super(game);
+
+
         engine = new PooledEngine();
         engine.addSystem(new ContactListenerSystem());
         engine.addSystem(new RenderSystem(Objects.renderer));
@@ -48,35 +57,60 @@ public class GameScreen extends ObjectsScreen {
 
     @Override
     public void show() {
-        engine.addEntity(EntityUtils.createPlayer());
-        setCollisionObjects(engine);
         BitmapFont font = new BitmapFont(Gdx.files.internal("glassy/skin/font-export.fnt"),Gdx.files.internal("glassy/skin/glassy-ui.png"),false);
 
+        Table table = new Table();
+        table.setFillParent(true);
+        table.setDebug(false);
 
-//
-//        Table table = new Table();
-//        table.setFillParent(true);
-//        stage.addActor(table);
-//        Button up = new Button();
-//        Button down = new Button();
-//        Button right = new Button();
-//        Button left = new Button();
-//
-//        table.add(up).fillX().uniformX();
-//        table.row().pad(0,0,10,10);
 
-        //   Skin skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
+        Skin skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
+
+        up = new Button(skin);
+         down = new Button(skin);
+         right = new Button(skin);
+         left = new Button(skin);
+
+
+        up.setSize(10,10);
+        up.setPosition(300,200);
+        up.addListener(new ClickListener());
+        stage.addActor(up );
+
+        down.setSize(10,10);
+        down.setPosition(300,100);
+        down.addListener(new ClickListener()); //действие при нажатии
+        stage.addActor(down );
+
+        right.setSize(10,10);
+        right.setPosition(250,150);
+        right.addListener(new ClickListener()); //действие при нажатии
+        stage.addActor(right );
+
+        left.setSize(10,10);
+        left.setPosition(350,150);
+        left.addListener(new ClickListener()); //действие при нажатии
+        stage.addActor(left );
+//     //   stage.addActor(table);
+
+
+
+        engine.addEntity(EntityUtils.createPlayer());
+        setCollisionObjects(engine);
 
 
     }
 
     @Override
     public void render(float delta) {
+
         Gdx.gl.glClearColor(0f, 0f, 0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         Objects.update(delta);
         engine.update(delta);
+        stage.act();
+        stage.draw();
     }
 
     @Override
