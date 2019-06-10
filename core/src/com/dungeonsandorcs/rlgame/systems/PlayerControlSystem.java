@@ -61,7 +61,7 @@ public class PlayerControlSystem extends IteratingSystem {
         left.setSize(10,10);
         left.setPosition(350,150);
         stage.addActor(left );
-        right.addListener(new ClickListener(){
+        up.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
@@ -69,9 +69,7 @@ public class PlayerControlSystem extends IteratingSystem {
 
             }
         });
-        left.addListener(new ClickListener());
-        down.addListener(new ClickListener());
-        up.addListener(new ClickListener());
+
 
 
 

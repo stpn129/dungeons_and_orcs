@@ -26,6 +26,8 @@ import com.dungeonsandorcs.rlgame.systems.RenderSystem;
 import com.dungeonsandorcs.rlgame.utils.EntityUtils;
 import com.dungeonsandorcs.rlgame.utils.Objects;
 
+import sun.font.TrueTypeFont;
+
 import static com.dungeonsandorcs.rlgame.utils.EntityUtils.createHouse;
 import static com.dungeonsandorcs.rlgame.utils.Objects.spriteBatch;
 
@@ -34,13 +36,16 @@ public class GameScreen extends ObjectsScreen {
     private PooledEngine engine;
     private Stage stage;
     public static Button up;
-    public  static Button down;
+    public static Button down;
     public static Button right;
-    public  static Button left;
-
+    public static Button left;
+    public static BitmapFont font;
+   // public static final String FONT_CHARACTERS = "abcdefghijklmnopqrstuvwxyz.,123";
 
     public GameScreen(DungeonGame game) {
         super(game);
+
+        font = new BitmapFont(Gdx.files.internal("font.fnt"),Gdx.files.internal("font.png"),false);
 
 
         engine = new PooledEngine();
@@ -57,42 +62,39 @@ public class GameScreen extends ObjectsScreen {
 
     @Override
     public void show() {
-        BitmapFont font = new BitmapFont(Gdx.files.internal("glassy/skin/font-export.fnt"),Gdx.files.internal("glassy/skin/glassy-ui.png"),false);
 
-        Table table = new Table();
-        table.setFillParent(true);
-        table.setDebug(false);
-
+//        Table table = new Table();
+//        table.setFillParent(true);
+//        table.setDebug(false);
 
         Skin skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
 
         up = new Button(skin);
-         down = new Button(skin);
-         right = new Button(skin);
-         left = new Button(skin);
+        down = new Button(skin);
+        right = new Button(skin);
+        left = new Button(skin);
 
 
-        up.setSize(10,10);
-        up.setPosition(300,200);
+        up.setSize(10, 10);
+        up.setPosition(300, 200);
         up.addListener(new ClickListener());
-        stage.addActor(up );
+        stage.addActor(up);
 
-        down.setSize(10,10);
-        down.setPosition(300,100);
-        down.addListener(new ClickListener()); //действие при нажатии
-        stage.addActor(down );
-
-        right.setSize(10,10);
-        right.setPosition(250,150);
-        right.addListener(new ClickListener()); //действие при нажатии
-        stage.addActor(right );
-
-        left.setSize(10,10);
-        left.setPosition(350,150);
-        left.addListener(new ClickListener()); //действие при нажатии
-        stage.addActor(left );
+//        down.setSize(10,10);
+//        down.setPosition(300,100);
+//        down.addListener(new ClickListener()); //действие при нажатии
+//        stage.addActor(down );
+//
+//        right.setSize(10,10);
+//        right.setPosition(250,150);
+//        right.addListener(new ClickListener()); //действие при нажатии
+//        stage.addActor(right );
+//
+//        left.setSize(10,10);
+//        left.setPosition(350,150);
+//        left.addListener(new ClickListener()); //действие при нажатии
+//        stage.addActor(left );
 //     //   stage.addActor(table);
-
 
 
         engine.addEntity(EntityUtils.createPlayer());
@@ -111,14 +113,16 @@ public class GameScreen extends ObjectsScreen {
         engine.update(delta);
         stage.act();
         stage.draw();
+
     }
 
     @Override
     public void dispose() {
         Objects.dispose();
+        font.dispose();
     }
 
-    public void setCollisionObjects(Engine engine){
+    public void setCollisionObjects(Engine engine) {
         engine.addEntity(createHouse(512 + 8, -16 + 8, 16f * 78 - 78 * AppConstants.EPS, 16f - AppConstants.EPS));
         engine.addEntity(createHouse(496 + 8, 16 + 8, 16f - AppConstants.EPS, 16f * 3 - 3 * AppConstants.EPS));
         engine.addEntity(createHouse(528 + 8, 16 + 8, 16f - AppConstants.EPS, 16f * 3 - 3 * AppConstants.EPS));

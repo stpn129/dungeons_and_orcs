@@ -18,6 +18,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.dungeonsandorcs.rlgame.AppConstants;
 import com.dungeonsandorcs.rlgame.components.B2dBodyComponent;
 import com.dungeonsandorcs.rlgame.components.PlayerComponent;
+import com.dungeonsandorcs.rlgame.screens.GameScreen;
 import com.dungeonsandorcs.rlgame.utils.ComponentUtil;
 import com.dungeonsandorcs.rlgame.utils.EntityUtils;
 import com.dungeonsandorcs.rlgame.utils.Objects;
@@ -39,7 +40,7 @@ public class RenderSystem extends IteratingSystem {
 
     public RenderSystem( OrthogonalTiledMapRenderer renderer0) {
         super(Family.all(PlayerComponent.class,B2dBodyComponent.class).get());
-
+        this.font = GameScreen.font;
         this.renderer0 = renderer0;
     }
 
@@ -60,7 +61,7 @@ public class RenderSystem extends IteratingSystem {
         Sprite enemy0 = new Sprite(new Texture("Creatures/enemy2.png"));
 
         //quests
-        Sprite text = new Sprite(new Texture("maps/Tilemap/text.png"));
+      //  Sprite text = new Sprite(new Texture("maps/Tilemap/text.png"));
         Sprite diamond = new Sprite(new Texture("Creatures/diamond.png"));
         Sprite stranger = new Sprite(new Texture("Creatures/stranger.png"));
 
